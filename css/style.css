@@ -1,42 +1,55 @@
-/* =====================================================
-   Premium Landing Page
-   Author: ChatGPT
-   ===================================================== */
+/* ==========================================================
+   Premium Landing Page v2
+   Part 1 - Foundation
+   ========================================================== */
+
+/* ===============================
+   Variables
+================================ */
 
 :root{
 
     --bg:#050505;
 
-    --surface:rgba(255,255,255,.06);
+    --text:#FFFFFF;
 
-    --surface-hover:rgba(255,255,255,.09);
+    --muted:#B9B9B9;
+
+    --glass:rgba(255,255,255,.06);
+
+    --glass-hover:rgba(255,255,255,.10);
 
     --border:rgba(255,255,255,.12);
 
-    --text:#ffffff;
-
-    --muted:#b9b9b9;
-
     --accent:#229ED9;
 
-    --shadow:0 20px 60px rgba(0,0,0,.45);
+    --shadow:
+        0 18px 45px rgba(0,0,0,.35);
 
-    --radius:18px;
+    --radius:22px;
 
-    --transition:.35s ease;
+    --transition:.35s cubic-bezier(.2,.8,.2,1);
 
 }
 
-/* Reset */
+/* ===============================
+   Reset
+================================ */
 
-*{
+*,
+*::before,
+*::after{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+
 }
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
 body{
@@ -51,291 +64,6 @@ body{
 
     min-height:100vh;
 
-}
-
-/* ===============================
-Background
-=============================== */
-
-.background{
-
-    position:fixed;
-
-    inset:0;
-
-    background-image:url("../assets/background.jpg");
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    z-index:-2;
-
-    animation:bgZoom 28s ease-in-out infinite alternate;
-
-}
-
-.overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(circle at top,
-    rgba(34,158,217,.18),
-    transparent 40%),
-
-    linear-gradient(
-    180deg,
-    rgba(0,0,0,.18),
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.92)
-    );
-
-}
-
-/* ===============================
-Hero
-=============================== */
-
-.hero{
-
-    min-height:100svh;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:40px 24px;
-
-}
-
-.container{
-
-    width:min(100%,460px);
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    text-align:center;
-
-}
-
-/* ===============================
-Typography
-=============================== */
-
-h1{
-
-    font-size:clamp(2.5rem,5vw,4rem);
-
-    font-weight:700;
-
-    letter-spacing:-1px;
-
-    line-height:1.1;
-
-}
-
-.subtitle{
-
-    margin-top:18px;
-
-    color:var(--muted);
-
-    font-size:1.05rem;
-
-    line-height:1.7;
-
-    max-width:420px;
-
-}
-
-/* ===============================
-Primary Button
-=============================== */
-
-.primary-btn{
-
-    margin-top:40px;
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    padding:14px 34px;
-
-    border-radius:999px;
-
-    background:linear-gradient(
-    135deg,
-    #229ED9,
-    #4d8dff);
-
-    font-weight:600;
-
-    transition:var(--transition);
-
-    box-shadow:
-    0 10px 35px rgba(34,158,217,.35);
-
-}
-
-.primary-btn:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-    0 20px 45px rgba(34,158,217,.45);
-
-}
-
-/* ===============================
-Channel Buttons
-=============================== */
-
-.channels{
-
-    width:100%;
-
-    margin-top:42px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-
-}
-
-.channel-btn{
-
-    width:100%;
-
-    height:58px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:0 20px;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    border-radius:var(--radius);
-
-    backdrop-filter:blur(20px);
-
-    transition:var(--transition);
-
-}
-
-.channel-btn:hover{
-
-    transform:translateY(-2px);
-
-    background:rgba(255,255,255,.09);
-
-    border-color:rgba(255,255,255,.24);
-
-    box-shadow:
-        0 18px 40px rgba(0,0,0,.30);
-
-}
-
-.arrow{
-
-    font-size:20px;
-
-    transition:.3s;
-
-}
-
-.channel-btn:hover .arrow{
-
-    transform:translateX(5px);
-
-}
-
-/* ===============================
-Footer
-=============================== */
-
-footer{
-
-    position:absolute;
-
-    bottom:30px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    text-align:center;
-
-    color:rgba(255,255,255,.55);
-
-    font-size:.85rem;
-
-}
-
-footer small{
-
-    display:block;
-
-    margin-top:6px;
-
-}
-
-/* ===============================
-Animation
-=============================== */
-
-@keyframes bgZoom{
-
-    from{
-
-        transform:scale(1);
-
-    }
-
-    to{
-
-        transform:scale(1.08);
-
-    }
-
-}
-
-/* ===============================
-   Page Fade
-=============================== */
-
-body{
-
     opacity:0;
 
     transition:opacity .6s ease;
@@ -348,68 +76,568 @@ body.loaded{
 
 }
 
-/* ===============================
-   Focus States
-=============================== */
+img{
 
-a:focus-visible{
+    max-width:100%;
 
-    outline:2px solid #229ED9;
+    display:block;
 
-    outline-offset:4px;
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
 
 }
 
 /* ===============================
-   Selection
-=============================== */
+   Background
+================================ */
 
-::selection{
+.background{
 
-    background:#229ED9;
+    position:fixed;
+
+    inset:0;
+
+    z-index:-2;
+
+    background:
+
+        url("../assets/background.jpg")
+
+        center center /
+
+        cover
+
+        no-repeat;
+
+    animation:
+
+        backgroundZoom
+
+        30s
+
+        ease-in-out
+
+        infinite
+
+        alternate;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            circle at top,
+
+            rgba(34,158,217,.18),
+
+            transparent 45%
+
+        ),
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(0,0,0,.18),
+
+            rgba(0,0,0,.48),
+
+            rgba(0,0,0,.76)
+
+        );
+
+}
+
+/* ===============================
+   Hero
+================================ */
+
+.hero{
+
+    min-height:100svh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:
+
+        clamp(40px,6vw,80px)
+
+        24px;
+
+    position:relative;
+
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    background:
+
+        rgba(34,158,217,.10);
+
+    filter:blur(120px);
+
+    z-index:-1;
+
+}
+
+/* ===============================
+   Container
+================================ */
+
+.container{
+
+    width:min(100%,540px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+/* ===============================
+   Badge
+================================ */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+
+        8px 18px;
+
+    border-radius:999px;
+
+    background:
+
+        rgba(255,255,255,.07);
+
+    border:
+
+        1px solid rgba(255,255,255,.10);
+
+    backdrop-filter:
+
+        blur(14px);
+
+    font-size:.72rem;
+
+    font-weight:600;
+
+    letter-spacing:.16em;
+
+    text-transform:uppercase;
+
+    color:#fff;
+
+    margin-bottom:26px;
+
+}
+
+/* ===============================
+   Heading
+================================ */
+
+h1{
+
+    font-size:
+
+        clamp(
+
+            3rem,
+
+            8vw,
+
+            4.8rem
+
+        );
+
+    line-height:1.02;
+
+    letter-spacing:-.05em;
+
+    font-weight:700;
+
+    text-wrap:balance;
+
+}
+
+/* ===============================
+   Subtitle
+================================ */
+
+.subtitle{
+
+    margin-top:22px;
+
+    max-width:420px;
+
+    color:var(--muted);
+
+    font-size:
+
+        clamp(
+
+            1rem,
+
+            2vw,
+
+            1.12rem
+
+        );
+
+    line-height:1.8;
+
+}
+
+/* ===============================
+   Channels Section
+================================ */
+
+.channels{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-top:56px;
+
+}
+
+/* ===============================
+   Telegram Cards
+================================ */
+
+.channel-btn{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:24px;
+
+    width:100%;
+
+    padding:22px 24px;
+
+    border-radius:var(--radius);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.04)
+        );
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+
+    cursor:pointer;
+
+}
+
+/* Top light reflection */
+
+.channel-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:1px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    opacity:.6;
+
+}
+
+/* Hover Glow */
+
+.channel-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    background:
+
+        radial-gradient(
+            circle at top right,
+            rgba(34,158,217,.12),
+            transparent 55%
+        );
+
+    opacity:0;
+
+    transition:opacity .35s ease;
+
+}
+
+/* ===============================
+   Card Content
+================================ */
+
+.channel-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    flex:1;
+
+    text-align:left;
+
+}
+
+.channel-title{
+
+    font-size:1.12rem;
+
+    font-weight:600;
+
+    letter-spacing:-.02em;
 
     color:#fff;
 
 }
 
-/* ===============================
-   Page Load
-=============================== */
+.channel-description{
 
-body{
+    margin-top:7px;
 
-    opacity:0;
+    color:rgba(255,255,255,.68);
 
-    transition:opacity .5s ease;
+    font-size:.92rem;
+
+    line-height:1.5;
 
 }
 
-body.loaded{
+/* ===============================
+   Arrow
+================================ */
+
+.arrow{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:
+
+        rgba(255,255,255,.08);
+
+    border:
+
+        1px solid rgba(255,255,255,.10);
+
+    font-size:1.05rem;
+
+    transition:
+
+        transform .35s ease,
+
+        background .35s ease,
+
+        border-color .35s ease;
+
+}
+
+/* ===============================
+   Hover
+================================ */
+
+.channel-btn:hover{
+
+    transform:
+
+        translateY(-4px)
+
+        scale(1.015);
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.06)
+        );
+
+    border-color:
+
+        rgba(255,255,255,.24);
+
+    box-shadow:
+
+        0 30px 70px rgba(0,0,0,.35),
+
+        inset 0 1px rgba(255,255,255,.10);
+
+}
+
+.channel-btn:hover::after{
 
     opacity:1;
 
 }
 
-/* ===============================
-   Animation Defaults
-=============================== */
+.channel-btn:hover .arrow{
 
-.badge,
-h1,
-.subtitle,
-.channel-btn,
-footer{
+    transform:translateX(8px);
 
-    will-change:transform, opacity;
+    background:
+
+        rgba(34,158,217,.18);
+
+    border-color:
+
+        rgba(34,158,217,.35);
 
 }
 
 /* ===============================
-   Arrow Animation
-=============================== */
+   Active Press
+================================ */
 
-.arrow{
+.channel-btn:active{
 
-    transition:transform .3s ease;
+    transform:
+
+        scale(.985);
+
+}
+
+/* ===============================
+   VIP Card
+================================ */
+
+.vip{
+
+    border-color:
+
+        rgba(34,158,217,.20);
+
+}
+
+.vip::after{
+
+    background:
+
+        radial-gradient(
+            circle at top right,
+            rgba(34,158,217,.18),
+            transparent 60%
+        );
+
+}
+
+.vip:hover{
+
+    border-color:
+
+        rgba(34,158,217,.45);
+
+}
+
+/* ===============================
+   Keyboard Focus
+================================ */
+
+.channel-btn:focus-visible{
+
+    outline:none;
+
+    border-color:#229ED9;
+
+    box-shadow:
+
+        0 0 0 4px rgba(34,158,217,.22),
+
+        0 20px 45px rgba(0,0,0,.35);
 
 }
