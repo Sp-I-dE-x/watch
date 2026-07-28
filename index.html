@@ -2,116 +2,167 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Exclusive Access</title>
 
-    <meta name="description"
+    <meta
+        name="description"
         content="Private Telegram channels with curated premium content.">
 
-    <meta name="theme-color" content="#050505">
+    <meta
+        name="theme-color"
+        content="#050505">
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+        property="og:title"
+        content="Exclusive Access">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    <meta
+        property="og:description"
+        content="Private Telegram channels with curated premium content.">
+
+    <meta
+        property="og:type"
+        content="website">
+
+    <meta
+        property="og:image"
+        content="assets/background.jpg">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css">
+
 </head>
 
 <body>
 
     <!-- Background -->
+
     <div class="background">
+
         <div class="overlay"></div>
+
     </div>
 
-    <!-- Hero -->
+    <!-- Main -->
+
     <main class="hero">
 
         <div class="container">
 
-            <!-- Logo -->
-            <img
-                src="assets/logo.png"
-                alt="Logo"
-                class="logo">
+            <header class="hero-content">
 
-            <!-- Heading -->
-            <h1>
-                Exclusive Access
-            </h1>
+                <span class="badge">
+                    PRIVATE ACCESS
+                </span>
 
-            <!-- Subtitle -->
-            <p class="subtitle">
-                Private Telegram channels with curated premium content.
-            </p>
+                <h1>
+                    Exclusive Access
+                </h1>
 
-            <!-- Primary Button -->
-            <a href="#channels" class="primary-btn">
-                Join Now
-            </a>
+                <p class="subtitle">
+                    Join our private Telegram channels for curated premium content, exclusive updates, and member-only resources.
+                </p>
 
-            <!-- Telegram Channels -->
+            </header>
+
             <section
-                id="channels"
-                class="channels">
+                class="channels"
+                aria-label="Telegram Channels">
+
+                <!-- Main -->
 
                 <a
                     href="https://t.me/your_main_channel"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     class="channel-btn">
 
-                    <span>
-                        Main Channel
-                    </span>
+                    <div class="channel-text">
+
+                        <span class="channel-title">
+                            📢 Main Channel
+                        </span>
+
+                        <span class="channel-description">
+                            Latest updates & announcements
+                        </span>
+
+                    </div>
 
                     <span class="arrow">
-                        ↗
+                        →
                     </span>
 
                 </a>
 
+                <!-- VIP -->
+
                 <a
                     href="https://t.me/your_vip_channel"
                     target="_blank"
-                    rel="noopener"
-                    class="channel-btn">
+                    rel="noopener noreferrer"
+                    class="channel-btn vip">
 
-                    <span>
-                        VIP Channel
-                    </span>
+                    <div class="channel-text">
+
+                        <span class="channel-title">
+                            ⭐ VIP Channel
+                        </span>
+
+                        <span class="channel-description">
+                            Exclusive premium content
+                        </span>
+
+                    </div>
 
                     <span class="arrow">
-                        ↗
+                        →
                     </span>
 
                 </a>
 
             </section>
 
+            <footer>
+
+                <p>
+                    Private Members Area
+                </p>
+
+                <small>
+                    © <span class="year"></span>
+                </small>
+
+            </footer>
+
         </div>
 
     </main>
-
-    <!-- Footer -->
-    <footer>
-
-        <p>
-            Private Members Area
-        </p>
-
-        <small>
-            © <span class="year"></span>
-        </small>
-        
-    </footer>
 
     <script src="js/app.js"></script>
 
