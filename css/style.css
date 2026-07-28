@@ -1,0 +1,764 @@
+/*==================================================
+  XiPop Landing v2
+  Premium Design System
+==================================================*/
+
+/*-------------------------
+  Google Font
+--------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/*-------------------------
+  CSS Variables
+--------------------------*/
+
+:root{
+
+    --bg:#050505;
+
+    --surface:rgba(255,255,255,.08);
+
+    --surface-hover:rgba(255,255,255,.12);
+
+    --border:rgba(255,255,255,.15);
+
+    --text:#ffffff;
+
+    --muted:#b7b7b7;
+
+    --primary:#7c5cff;
+
+    --secondary:#9d7dff;
+
+    --radius:30px;
+
+    --card-radius:22px;
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.45);
+
+    --glass-blur:22px;
+
+    --transition:.35s cubic-bezier(.22,.61,.36,1);
+
+}
+
+
+/*-------------------------
+  Reset
+--------------------------*/
+
+*,
+*::before,
+*::after{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    overflow:hidden;
+
+    min-height:100vh;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+/*-------------------------
+  Background
+--------------------------*/
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    url("../assets/background.webp")
+
+    center center /
+
+    cover no-repeat;
+
+    transform:scale(1.06);
+
+    animation:bgZoom 35s ease-in-out infinite alternate;
+
+    z-index:-6;
+
+}
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        rgba(0,0,0,.35),
+
+        rgba(0,0,0,.55),
+
+        rgba(0,0,0,.82)
+
+    );
+
+    z-index:-5;
+
+}
+
+
+/*-------------------------
+  Aurora
+--------------------------*/
+
+.aurora{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-4;
+
+}
+
+.aurora span{
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.18;
+
+}
+
+.aurora span:nth-child(1){
+
+    background:#8b5cf6;
+
+    top:-180px;
+
+    left:-120px;
+
+}
+
+.aurora span:nth-child(2){
+
+    background:#5b8cff;
+
+    right:-180px;
+
+    top:10%;
+
+}
+
+.aurora span:nth-child(3){
+
+    background:#ff4db8;
+
+    bottom:-250px;
+
+    left:30%;
+
+}
+
+
+/*-------------------------
+  Noise
+--------------------------*/
+
+.noise{
+
+    position:fixed;
+
+    inset:0;
+
+    opacity:.04;
+
+    background-image:
+
+    radial-gradient(#ffffff 1px,transparent 1px);
+
+    background-size:4px 4px;
+
+    z-index:-3;
+
+}
+
+
+/*-------------------------
+  Hero
+--------------------------*/
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+/*==================================================
+  XiPop Landing v2
+  Premium Design System
+==================================================*/
+
+/*-------------------------
+  Google Font
+--------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/*-------------------------
+  CSS Variables
+--------------------------*/
+
+:root{
+
+    --bg:#050505;
+
+    --surface:rgba(255,255,255,.08);
+
+    --surface-hover:rgba(255,255,255,.12);
+
+    --border:rgba(255,255,255,.15);
+
+    --text:#ffffff;
+
+    --muted:#b7b7b7;
+
+    --primary:#7c5cff;
+
+    --secondary:#9d7dff;
+
+    --radius:30px;
+
+    --card-radius:22px;
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.45);
+
+    --glass-blur:22px;
+
+    --transition:.35s cubic-bezier(.22,.61,.36,1);
+
+}
+
+
+/*-------------------------
+  Reset
+--------------------------*/
+
+*,
+*::before,
+*::after{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    overflow:hidden;
+
+    min-height:100vh;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+/*-------------------------
+  Background
+--------------------------*/
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    url("../assets/background.webp")
+
+    center center /
+
+    cover no-repeat;
+
+    transform:scale(1.06);
+
+    animation:bgZoom 35s ease-in-out infinite alternate;
+
+    z-index:-6;
+
+}
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        rgba(0,0,0,.35),
+
+        rgba(0,0,0,.55),
+
+        rgba(0,0,0,.82)
+
+    );
+
+    z-index:-5;
+
+}
+
+
+/*-------------------------
+  Aurora
+--------------------------*/
+
+.aurora{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-4;
+
+}
+
+.aurora span{
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.18;
+
+}
+
+.aurora span:nth-child(1){
+
+    background:#8b5cf6;
+
+    top:-180px;
+
+    left:-120px;
+
+}
+
+.aurora span:nth-child(2){
+
+    background:#5b8cff;
+
+    right:-180px;
+
+    top:10%;
+
+}
+
+.aurora span:nth-child(3){
+
+    background:#ff4db8;
+
+    bottom:-250px;
+
+    left:30%;
+
+}
+
+
+/*-------------------------
+  Noise
+--------------------------*/
+
+.noise{
+
+    position:fixed;
+
+    inset:0;
+
+    opacity:.04;
+
+    background-image:
+
+    radial-gradient(#ffffff 1px,transparent 1px);
+
+    background-size:4px 4px;
+
+    z-index:-3;
+
+}
+
+
+/*-------------------------
+  Hero
+--------------------------*/
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+/*==================================================
+  XiPop Landing v2
+  Premium Design System
+==================================================*/
+
+/*-------------------------
+  Google Font
+--------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/*-------------------------
+  CSS Variables
+--------------------------*/
+
+:root{
+
+    --bg:#050505;
+
+    --surface:rgba(255,255,255,.08);
+
+    --surface-hover:rgba(255,255,255,.12);
+
+    --border:rgba(255,255,255,.15);
+
+    --text:#ffffff;
+
+    --muted:#b7b7b7;
+
+    --primary:#7c5cff;
+
+    --secondary:#9d7dff;
+
+    --radius:30px;
+
+    --card-radius:22px;
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.45);
+
+    --glass-blur:22px;
+
+    --transition:.35s cubic-bezier(.22,.61,.36,1);
+
+}
+
+
+/*-------------------------
+  Reset
+--------------------------*/
+
+*,
+*::before,
+*::after{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    overflow:hidden;
+
+    min-height:100vh;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+/*-------------------------
+  Background
+--------------------------*/
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    url("../assets/background.webp")
+
+    center center /
+
+    cover no-repeat;
+
+    transform:scale(1.06);
+
+    animation:bgZoom 35s ease-in-out infinite alternate;
+
+    z-index:-6;
+
+}
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        rgba(0,0,0,.35),
+
+        rgba(0,0,0,.55),
+
+        rgba(0,0,0,.82)
+
+    );
+
+    z-index:-5;
+
+}
+
+
+/*-------------------------
+  Aurora
+--------------------------*/
+
+.aurora{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-4;
+
+}
+
+.aurora span{
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.18;
+
+}
+
+.aurora span:nth-child(1){
+
+    background:#8b5cf6;
+
+    top:-180px;
+
+    left:-120px;
+
+}
+
+.aurora span:nth-child(2){
+
+    background:#5b8cff;
+
+    right:-180px;
+
+    top:10%;
+
+}
+
+.aurora span:nth-child(3){
+
+    background:#ff4db8;
+
+    bottom:-250px;
+
+    left:30%;
+
+}
+
+
+/*-------------------------
+  Noise
+--------------------------*/
+
+.noise{
+
+    position:fixed;
+
+    inset:0;
+
+    opacity:.04;
+
+    background-image:
+
+    radial-gradient(#ffffff 1px,transparent 1px);
+
+    background-size:4px 4px;
+
+    z-index:-3;
+
+}
+
+
+/*-------------------------
+  Hero
+--------------------------*/
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
