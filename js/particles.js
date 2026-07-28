@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         height: "100%",
         zIndex: "-1",
         pointerEvents: "none",
-        opacity: "0.35"
+        opacity: "0.18"
     });
 
     function resize() {
