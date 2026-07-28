@@ -1029,21 +1029,29 @@ html{
 @media (max-width:380px){
 
     .title{
-
         font-size:2rem;
-
     }
 
     .badge{
-
         font-size:.75rem;
-
     }
 
     .content h3{
-
         font-size:.95rem;
-
     }
 
+}
+
+/* ===============================
+   Background Position
+================================ */
+
+.background{
+    background-position:left center;
+}
+
+@media (max-width:900px){
+    .background{
+        background-position:center top;
+    }
 }
