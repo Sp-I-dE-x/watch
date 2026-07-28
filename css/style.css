@@ -37,89 +37,101 @@ a{
 =========================== */
 
 .hero{
-    width:100%;
-    aspect-ratio:9/12;
-    overflow:hidden;
+
     position:relative;
-    border-radius:0 0 35px 35px;
+
+    height:82vh;
+
+    min-height:620px;
+
+    overflow:hidden;
+
+    border-radius:0 0 34px 34px;
+
 }
 
 .hero img{
+
     width:100%;
+
     height:100%;
+
     object-fit:cover;
+
     object-position:center top;
-    transition:.6s;
+
+    display:block;
+
 }
 
-.hero:hover img{
-    transform:scale(1.03);
-}
-
-.hero-overlay{
+.overlay{
 
     position:absolute;
+
     inset:0;
 
     background:
+
     linear-gradient(
+
         to bottom,
+
         rgba(0,0,0,.05),
+
+        rgba(0,0,0,.10),
+
         rgba(0,0,0,.25),
-        rgba(17,17,17,.95)
+
+        rgba(17,17,17,.90)
+
     );
 
 }
-
 /* ===========================
 PROFILE
 =========================== */
 
-.profile{
+.hero-content{
 
-    margin-top:-55px;
+    position:absolute;
 
-    position:relative;
+    left:0;
 
-    z-index:5;
+    right:0;
 
-    padding:0 28px;
+    bottom:110px;
 
     text-align:center;
 
+    padding:0 24px;
+
 }
 
-.profile h1{
+.hero-content h1{
 
-    font-size:38px;
+    font-size:34px;
 
     font-weight:700;
 
-    letter-spacing:2px;
+    color:#fff;
 
-}
-
-.profile p{
-
-    margin-top:8px;
-
-    color:#bfbfbf;
-
-    font-size:16px;
-
-    font-weight:400;
-
-    line-height:1.6;
+    text-shadow:0 6px 18px rgba(0,0,0,.6);
 
 }
 
 /* ===========================
-LINKS
+   LINKS
 =========================== */
 
 .links{
 
-    padding:35px 20px 0;
+    position:relative;
+
+    z-index:20;
+
+    margin-top:-40px;   /* overlap hero image */
+
+    padding:0 20px 40px;
 
     display:flex;
 
@@ -129,15 +141,13 @@ LINKS
 
 }
 
+/* ===========================
+   BUTTON
+=========================== */
+
 .link-card{
 
-    background:#fff;
-
-    color:#111;
-
-    border-radius:22px;
-
-    padding:20px 22px;
+    position:relative;
 
     display:flex;
 
@@ -145,23 +155,49 @@ LINKS
 
     align-items:center;
 
-    transition:.25s;
+    padding:20px 22px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.35);
 
     box-shadow:
 
-    0 15px 35px rgba(0,0,0,.18);
+        0 18px 45px rgba(0,0,0,.25);
+
+    overflow:hidden;
+
+    transition:
+        transform .30s ease,
+        box-shadow .30s ease;
 
 }
 
 .link-card:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-6px);
 
     box-shadow:
 
-    0 20px 45px rgba(0,0,0,.28);
+        0 28px 60px rgba(0,0,0,.35);
 
 }
+
+.link-card:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+   LEFT SIDE
+=========================== */
 
 .left{
 
@@ -169,57 +205,115 @@ LINKS
 
     align-items:center;
 
-    gap:16px;
+    gap:18px;
 
 }
 
 .icon{
 
-    width:46px;
+    width:54px;
 
-    height:46px;
+    height:54px;
 
     border-radius:50%;
 
-    background:#0088cc;
-
-    color:#fff;
+    background:linear-gradient(135deg,#229ED9,#0088cc);
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
 
+    align-items:center;
+
+    color:#fff;
+
     flex-shrink:0;
+
+    box-shadow:
+
+        0 10px 22px rgba(34,158,217,.45);
+
+}
+
+.icon svg{
+
+    width:24px;
+
+    height:24px;
 
 }
 
 .left span{
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:600;
+
+    color:#111;
 
 }
 
+/* ===========================
+   ARROW
+=========================== */
+
 .arrow{
 
-    font-size:24px;
+    font-size:28px;
 
-    font-weight:600;
+    color:#777;
 
-    opacity:.6;
-
-    transition:.25s;
+    transition:.3s;
 
 }
 
 .link-card:hover .arrow{
 
-    transform:translateX(6px);
+    transform:translateX(8px);
 
-    opacity:1;
+    color:#111;
+
+}
+
+/* ===========================
+   SHINE EFFECT
+=========================== */
+
+.link-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:70%;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.45),
+
+            transparent
+
+        );
+
+    transition:.8s;
+
+}
+
+.link-card:hover::before{
+
+    left:130%;
 
 }
 
