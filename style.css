@@ -1,69 +1,106 @@
-/* ==========================================================
-   PREMIUM LANDING PAGE
-   Version 1.0
-   ========================================================== */
+/*==================================================
+  XiPop Landing v2
+  Premium Design System
+==================================================*/
 
-/* ===============================
-   CSS VARIABLES
-================================= */
+/*-------------------------
+  Google Font
+--------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
-:root {
+/*-------------------------
+  CSS Variables
+--------------------------*/
 
-    --bg: #050505;
+:root{
 
-    --card: rgba(255,255,255,.08);
+    --bg:#050505;
 
-    --border: rgba(255,255,255,.15);
+    --surface:rgba(255,255,255,.08);
 
-    --text: #ffffff;
+    --surface-hover:rgba(255,255,255,.12);
 
-    --text2: #bdbdbd;
+    --border:rgba(255,255,255,.15);
 
-    --accent: #ff3d7f;
+    --text:#ffffff;
 
-    --shadow: 0 30px 80px rgba(0,0,0,.45);
+    --muted:#b7b7b7;
 
-    --blur: 22px;
+    --primary:#7c5cff;
 
-    --radius: 28px;
+    --secondary:#9d7dff;
 
-    --transition: .35s ease;
+    --radius:30px;
+
+    --card-radius:22px;
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.45);
+
+    --glass-blur:22px;
+
+    --transition:.35s cubic-bezier(.22,.61,.36,1);
 
 }
 
 
-/* ===============================
-   RESET
-================================= */
+/*-------------------------
+  Reset
+--------------------------*/
 
-*{
+*,
+*::before,
+*::after{
+
     margin:0;
     padding:0;
+
     box-sizing:border-box;
+
 }
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
 body{
 
     font-family:"Space Grotesk",sans-serif;
 
+    background:var(--bg);
+
     color:var(--text);
 
-    background:var(--bg);
+    overflow:hidden;
 
     min-height:100vh;
 
-    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
 
 }
 
 
-/* ===============================
-   BACKGROUND
-================================= */
+/*-------------------------
+  Background
+--------------------------*/
 
 .background{
 
@@ -71,24 +108,21 @@ body{
 
     inset:0;
 
-    background-image:url("assets/background.webp");
+    background:
 
-    background-size:cover;
+    url("../assets/background.webp")
 
-    background-position:center;
+    center center /
 
-    background-repeat:no-repeat;
+    cover no-repeat;
 
-    transform:scale(1.05);
+    transform:scale(1.06);
 
-    animation:zoomBackground 30s linear infinite alternate;
+    animation:bgZoom 35s ease-in-out infinite alternate;
 
-    z-index:-3;
+    z-index:-6;
 
 }
-
-
-/* dark overlay */
 
 .overlay{
 
@@ -100,20 +134,87 @@ body{
 
     linear-gradient(
 
+        180deg,
+
         rgba(0,0,0,.35),
 
         rgba(0,0,0,.55),
 
-        rgba(0,0,0,.75)
+        rgba(0,0,0,.82)
 
     );
 
-    z-index:-2;
+    z-index:-5;
 
 }
 
 
-/* subtle grain */
+/*-------------------------
+  Aurora
+--------------------------*/
+
+.aurora{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-4;
+
+}
+
+.aurora span{
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.18;
+
+}
+
+.aurora span:nth-child(1){
+
+    background:#8b5cf6;
+
+    top:-180px;
+
+    left:-120px;
+
+}
+
+.aurora span:nth-child(2){
+
+    background:#5b8cff;
+
+    right:-180px;
+
+    top:10%;
+
+}
+
+.aurora span:nth-child(3){
+
+    background:#ff4db8;
+
+    bottom:-250px;
+
+    left:30%;
+
+}
+
+
+/*-------------------------
+  Noise
+--------------------------*/
 
 .noise{
 
@@ -121,28 +222,26 @@ body{
 
     inset:0;
 
-    opacity:.05;
+    opacity:.04;
 
     background-image:
 
-    radial-gradient(#fff 1px, transparent 1px);
+    radial-gradient(#ffffff 1px,transparent 1px);
 
     background-size:4px 4px;
 
-    z-index:-1;
+    z-index:-3;
 
 }
 
 
-/* ===============================
-   HERO
-================================= */
+/*-------------------------
+  Hero
+--------------------------*/
 
 .hero{
 
-    width:100%;
-
-    height:100vh;
+    min-height:100vh;
 
     display:flex;
 
@@ -151,428 +250,5 @@ body{
     align-items:center;
 
     padding:40px;
-
-}
-
-
-/* ===============================
-   GLASS CARD
-================================= */
-
-.glass-card{
-
-    width:min(500px,100%);
-
-    padding:42px;
-
-    border-radius:var(--radius);
-
-    backdrop-filter:blur(var(--blur));
-
-    -webkit-backdrop-filter:blur(var(--blur));
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    box-shadow:var(--shadow);
-
-    text-align:center;
-
-    animation:fadeUp .8s ease;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-/* glow */
-
-.glass-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-1px;
-
-    background:
-
-    linear-gradient(
-
-        130deg,
-
-        transparent,
-
-        rgba(255,255,255,.08),
-
-        transparent
-
-    );
-
-    transform:translateX(-120%);
-
-}
-
-.glass-card:hover::before{
-
-    animation:shine 2s linear;
-
-}
-
-
-/* ===============================
-   TITLE
-================================= */
-
-h1{
-
-    font-size:3rem;
-
-    font-weight:700;
-
-    letter-spacing:4px;
-
-    margin-bottom:10px;
-
-}
-
-p{
-
-    color:var(--text2);
-
-    font-size:1rem;
-
-    line-height:1.7;
-
-}
-
-
-/* ===============================
-   DIVIDER
-================================= */
-
-.divider{
-
-    width:70px;
-
-    height:3px;
-
-    background:linear-gradient(
-
-        90deg,
-
-        transparent,
-
-        var(--accent),
-
-        transparent
-
-    );
-
-    margin:34px auto;
-
-    border-radius:50px;
-
-}
-
-
-/* ===============================
-   BUTTONS
-================================= */
-
-.buttons{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:18px;
-
-}
-
-
-/* individual button */
-
-.btn{
-
-    text-decoration:none;
-
-    color:white;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:18px 22px;
-
-    border-radius:18px;
-
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.12);
-
-    backdrop-filter:blur(16px);
-
-    transition:var(--transition);
-
-    font-size:1rem;
-
-    font-weight:500;
-
-}
-
-
-/* hover */
-
-.btn:hover{
-
-    transform:translateY(-4px) scale(1.02);
-
-    background:rgba(255,255,255,.12);
-
-    border-color:rgba(255,255,255,.25);
-
-    box-shadow:
-
-        0 15px 35px rgba(0,0,0,.35);
-
-}
-
-
-/* arrow */
-
-.arrow{
-
-    font-size:1.2rem;
-
-    transition:.3s;
-
-}
-
-.btn:hover .arrow{
-
-    transform:translateX(8px);
-
-}
-
-
-/* ===============================
-   CURSOR GLOW
-================================= */
-
-.cursor-glow{
-
-    position:fixed;
-
-    width:280px;
-
-    height:280px;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    background:
-
-    radial-gradient(
-
-        rgba(255,255,255,.10),
-
-        transparent 70%
-
-    );
-
-    transform:translate(-50%,-50%);
-
-    z-index:0;
-
-}
-
-
-/* ===============================
-   ANIMATIONS
-================================= */
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(35px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:none;
-
-    }
-
-}
-
-@keyframes shine{
-
-    to{
-
-        transform:translateX(120%);
-
-    }
-
-}
-
-@keyframes zoomBackground{
-
-    from{
-
-        transform:scale(1.05);
-
-    }
-
-    to{
-
-        transform:scale(1.12);
-
-    }
-
-}
-
-
-/* ===============================
-   RESPONSIVE
-================================= */
-
-@media(max-width:768px){
-
-    .glass-card{
-
-        padding:32px;
-
-        border-radius:22px;
-
-    }
-
-    h1{
-
-        font-size:2.2rem;
-
-    }
-
-    .btn{
-
-        padding:16px 18px;
-
-    }
-
-}
-
-@media(max-width:480px){
-
-    .hero{
-
-        padding:18px;
-
-    }
-
-    .glass-card{
-
-        padding:26px;
-
-    }
-
-    h1{
-
-        font-size:1.9rem;
-
-        letter-spacing:2px;
-
-    }
-
-    p{
-
-        font-size:.92rem;
-
-    }
-
-}
-
-/* ===================================
-   RIPPLE EFFECT
-=================================== */
-
-.btn{
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.ripple{
-
-    position:absolute;
-
-    width:12px;
-
-    height:12px;
-
-    background:rgba(255,255,255,.45);
-
-    border-radius:50%;
-
-    transform:translate(-50%,-50%) scale(0);
-
-    animation:ripple .7s ease-out;
-
-}
-
-@keyframes ripple{
-
-    to{
-
-        transform:translate(-50%,-50%) scale(24);
-
-        opacity:0;
-
-    }
-
-}
-
-
-/* ===================================
-   FOCUS
-=================================== */
-
-.focus{
-
-    outline:2px solid rgba(255,255,255,.4);
-
-    outline-offset:3px;
-
-}
-
-
-/* ===================================
-   PAGE LOADED
-=================================== */
-
-body{
-
-    opacity:0;
-
-    transition:opacity .7s ease;
-
-}
-
-body.loaded{
-
-    opacity:1;
 
 }
