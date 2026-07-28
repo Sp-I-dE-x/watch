@@ -1,57 +1,67 @@
-/* ===========================================
+/* =====================================================
    Premium Landing Page
    app.js
-=========================================== */
+   ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     // Fade in page
-    document.body.classList.add("loaded");
+    requestAnimationFrame(() => {
+        document.body.classList.add("loaded");
+    });
 
-    // Smooth scroll for Join Now button
-    const joinButton = document.querySelector(".primary-btn");
+    // Update copyright year
+    const year = document.querySelector(".year");
 
-    if (joinButton) {
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
 
-        joinButton.addEventListener("click", function (e) {
+    // Stagger entrance animation
+    const elements = document.querySelectorAll(
+        ".badge, h1, .subtitle, .channel-btn, footer"
+    );
 
-            const target = document.querySelector("#channels");
+    elements.forEach((element, index) => {
 
-            if (!target) return;
+        element.style.opacity = "0";
+        element.style.transform = "translateY(24px)";
 
-            e.preventDefault();
+        setTimeout(() => {
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+            element.style.transition =
+                "opacity .6s ease, transform .6s ease";
+
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+
+        }, index * 120);
+
+    });
+
+    // Button interaction
+    document.querySelectorAll(".channel-btn").forEach(button => {
+
+        button.addEventListener("mouseenter", () => {
+
+            const arrow = button.querySelector(".arrow");
+
+            if (arrow) {
+                arrow.style.transform = "translateX(8px)";
+            }
 
         });
 
-    }
+        button.addEventListener("mouseleave", () => {
 
-    // Keyboard accessibility
-    document.querySelectorAll("a").forEach(link => {
+            const arrow = button.querySelector(".arrow");
 
-        link.addEventListener("keyup", e => {
-
-            if (e.key === "Enter") {
-
-                link.click();
-
+            if (arrow) {
+                arrow.style.transform = "translateX(0)";
             }
 
         });
 
     });
-
-    // Update footer year automatically
-    const year = document.querySelector(".year");
-
-    if (year) {
-
-        year.textContent = new Date().getFullYear();
-
-    }
 
 });
