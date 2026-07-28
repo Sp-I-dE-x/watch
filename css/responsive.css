@@ -1,58 +1,98 @@
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+:root{
+
+    --bg:#111111;
+    --card:#ffffff;
+    --text:#ffffff;
+    --muted:#cfcfcf;
+    --telegram:#229ED9;
+    --radius:26px;
+    --shadow:0 18px 45px rgba(0,0,0,.22);
+    --transition:.30s cubic-bezier(.4,0,.2,1);
+
+}
+
 html{
+
     scroll-behavior:smooth;
+
 }
 
 body{
+
     font-family:"Poppins",sans-serif;
-    background:#111;
-    color:#fff;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+
 }
 
 img{
+
     display:block;
     width:100%;
+
 }
 
 a{
+
     text-decoration:none;
     color:inherit;
+
 }
+
+/* =====================================================
+   LAYOUT
+===================================================== */
 
 .page{
+
     width:100%;
-    max-width:650px;
-    margin:auto;
+    max-width:520px;
+    margin:0 auto;
     min-height:100vh;
-    padding-bottom:40px;
+    padding-bottom:60px;
+
 }
 
-/* ===========================
+/* =====================================================
    HERO
-=========================== */
+===================================================== */
 
 .hero{
-    width:100%;
-    height:360px;
+
     position:relative;
+    width:100%;
+    height:380px;
     overflow:hidden;
-    border-radius:0 0 28px 28px;
+    border-radius:0 0 34px 34px;
+    background:#1a1a1a;
+
 }
 
 .hero img{
+
     width:100%;
     height:100%;
     object-fit:cover;
     object-position:center top;
+    transition:transform .7s ease;
+
 }
 
 .hero:hover img{
-    transform:scale(1.03);
+
+    transform:scale(1.04);
+
 }
 
 .hero-overlay{
@@ -62,27 +102,26 @@ a{
 
     background:
     linear-gradient(
-        to bottom,
-        rgba(0,0,0,.05),
-        rgba(0,0,0,.25),
-        rgba(17,17,17,.95)
+        to top,
+        rgba(17,17,17,.98) 5%,
+        rgba(17,17,17,.65) 35%,
+        rgba(17,17,17,.08) 100%
     );
 
 }
 
-/* ===========================
-PROFILE
-=========================== */
+/* =====================================================
+   PROFILE
+===================================================== */
 
 .profile{
 
-    margin-top:-55px;
-
     position:relative;
+    z-index:10;
 
-    z-index:5;
+    margin-top:-72px;
 
-    padding:0 28px;
+    padding:0 26px;
 
     text-align:center;
 
@@ -90,127 +129,134 @@ PROFILE
 
 .profile h1{
 
-    font-size:38px;
-
+    font-size:34px;
+    line-height:1.15;
     font-weight:700;
 
-    letter-spacing:2px;
+    text-shadow:
+
+        0 5px 22px rgba(0,0,0,.45);
 
 }
 
-.profile p{
-
-    margin-top:8px;
-
-    color:#bfbfbf;
-
-    font-size:16px;
-
-    font-weight:400;
-
-    line-height:1.6;
-
-}
-
-/* ===========================
-LINKS
-=========================== */
-
+/* =====================================================
+   BUTTONS
+===================================================== */
 .links{
 
-    padding:35px 20px 0;
-
     display:flex;
-
     flex-direction:column;
-
     gap:18px;
+
+    padding:36px 20px 0;
 
 }
 
 .link-card{
 
-    background:#fff;
+    position:relative;
 
-    color:#111;
-
-    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
     padding:20px 22px;
 
-    display:flex;
+    background:var(--card);
+    color:#111;
 
-    justify-content:space-between;
+    border-radius:var(--radius);
 
-    align-items:center;
+    box-shadow:var(--shadow);
 
-    transition:.25s;
+    overflow:hidden;
 
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.18);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
 
 }
 
 .link-card:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-5px);
 
     box-shadow:
+        0 24px 55px rgba(0,0,0,.28);
 
-    0 20px 45px rgba(0,0,0,.28);
+}
+
+.link-card:active{
+
+    transform:scale(.98);
 
 }
 
 .left{
 
     display:flex;
-
     align-items:center;
-
     gap:16px;
 
 }
 
 .icon{
 
-    width:46px;
-
-    height:46px;
+    width:48px;
+    height:48px;
 
     border-radius:50%;
 
-    background:#0088cc;
+    background:var(--telegram);
 
     color:#fff;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     flex-shrink:0;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+
+}
+
+.link-card:hover .icon{
+
+    transform:rotate(-8deg) scale(1.08);
+
+    box-shadow:
+        0 10px 24px rgba(34,158,217,.45);
+
+}
+
+.icon svg{
+
+    width:22px;
+    height:22px;
 
 }
 
 .left span{
 
     font-size:17px;
-
     font-weight:600;
+    line-height:1.3;
 
 }
 
 .arrow{
 
     font-size:24px;
+    font-weight:700;
 
-    font-weight:600;
+    opacity:.55;
 
-    opacity:.6;
-
-    transition:.25s;
+    transition:
+        transform var(--transition),
+        opacity var(--transition);
 
 }
 
@@ -222,92 +268,9 @@ LINKS
 
 }
 
-/* ===========================
-FOOTER
-=========================== */
-
-footer{
-
-    text-align:center;
-
-    margin-top:42px;
-
-    color:#8d8d8d;
-
-    font-size:14px;
-
-    letter-spacing:.5px;
-
-}
-
-/* ===========================
-ANIMATION
-=========================== */
-
-.hero,
-.profile,
-.link-card,
-footer{
-
-    opacity:0;
-
-    transform:translateY(25px);
-
-    animation:fadeUp .8s forwards;
-
-}
-
-.profile{
-
-    animation-delay:.15s;
-
-}
-
-.link-card:nth-child(1){
-
-    animation-delay:.25s;
-
-}
-
-.link-card:nth-child(2){
-
-    animation-delay:.35s;
-
-}
-
-.link-card:nth-child(3){
-
-    animation-delay:.45s;
-
-}
-
-footer{
-
-    animation-delay:.55s;
-
-}
-
-@keyframes fadeUp{
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-/* Ripple */
-
-.link-card{
-
-    position:relative;
-
-    overflow:hidden;
-
-}
+/* ==========================================
+   Ripple Highlight
+========================================== */
 
 .link-card::before{
 
@@ -316,16 +279,14 @@ footer{
     position:absolute;
 
     width:0;
-
     height:0;
 
     left:50%;
-
     top:50%;
 
-    background:rgba(0,0,0,.05);
-
     border-radius:50%;
+
+    background:rgba(0,0,0,.05);
 
     transform:translate(-50%,-50%);
 
@@ -335,8 +296,101 @@ footer{
 
 .link-card:hover::before{
 
-    width:500px;
+    width:550px;
+    height:550px;
 
-    height:500px;
+}
+
+/* ==========================================
+   Fade Animation
+========================================== */
+
+.hero,
+.profile,
+.link-card{
+
+    opacity:0;
+
+    transform:translateY(24px);
+
+    animation:fadeUp .75s ease forwards;
+
+}
+
+.profile{
+
+    animation-delay:.12s;
+
+}
+
+.link-card:nth-child(1){
+
+    animation-delay:.22s;
+
+}
+
+.link-card:nth-child(2){
+
+    animation-delay:.34s;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(24px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   Focus Accessibility
+========================================== */
+
+.link-card:focus-visible{
+
+    outline:3px solid rgba(34,158,217,.45);
+
+    outline-offset:5px;
+
+}
+
+/* ==========================================
+   Scrollbar
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#333;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#555;
 
 }
