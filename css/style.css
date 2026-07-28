@@ -1,6 +1,33 @@
-/* =====================================
-   RESET
-===================================== */
+/* =====================================================
+   Premium Landing Page
+   Author: ChatGPT
+   ===================================================== */
+
+:root{
+
+    --bg:#050505;
+
+    --surface:rgba(255,255,255,.06);
+
+    --surface-hover:rgba(255,255,255,.09);
+
+    --border:rgba(255,255,255,.12);
+
+    --text:#ffffff;
+
+    --muted:#b9b9b9;
+
+    --accent:#229ED9;
+
+    --shadow:0 20px 60px rgba(0,0,0,.45);
+
+    --radius:18px;
+
+    --transition:.35s ease;
+
+}
+
+/* Reset */
 
 *{
     margin:0;
@@ -14,103 +41,41 @@ html{
 
 body{
 
-    font-family:"Poppins",sans-serif;
+    font-family:"Inter",sans-serif;
 
-    background:#111;
+    background:var(--bg);
 
-    color:#fff;
+    color:var(--text);
 
     overflow-x:hidden;
 
-}
-
-img{
-
-    display:block;
-
-    width:100%;
-
-}
-
-a{
-
-    text-decoration:none;
-
-    color:inherit;
-
-}
-
-/* =====================================
-   PAGE
-===================================== */
-
-.page{
-
-    width:100%;
-
-    max-width:520px;
-
-    margin:0 auto;
-
     min-height:100vh;
 
-    position:relative;
-
-    background:#111;
-
 }
 
-/* =====================================
-   HERO
-===================================== */
+/* ===============================
+Background
+=============================== */
 
-.hero{
+.background{
 
-    position:relative;
+    position:fixed;
 
-    width:100%;
+    inset:0;
 
-    height:78vh;
+    background-image:url("../assets/background.webp");
 
-    min-height:540px;
+    background-size:cover;
 
-    max-height:760px;
+    background-position:center;
 
-    overflow:hidden;
+    background-repeat:no-repeat;
 
-    border-radius:0 0 34px 34px;
+    z-index:-2;
 
-}
-
-/* =====================================
-   HERO IMAGE
-===================================== */
-
-.hero img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-    object-position:center top;
-
-    transform:scale(1);
-
-    transition:transform .8s ease;
+    animation:bgZoom 28s ease-in-out infinite alternate;
 
 }
-
-.hero:hover img{
-
-    transform:scale(1.03);
-
-}
-
-/* =====================================
-   OVERLAY
-===================================== */
 
 .overlay{
 
@@ -119,81 +84,166 @@ a{
     inset:0;
 
     background:
+
+    radial-gradient(circle at top,
+    rgba(34,158,217,.18),
+    transparent 40%),
+
     linear-gradient(
-
-        to bottom,
-
-        rgba(0,0,0,.02) 0%,
-
-        rgba(0,0,0,.05) 35%,
-
-        rgba(0,0,0,.15) 65%,
-
-        rgba(17,17,17,.75) 100%
-
+    180deg,
+    rgba(0,0,0,.18),
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.92)
     );
 
 }
 
-/* =====================================
-   TITLE
-===================================== */
+/* ===============================
+Hero
+=============================== */
 
-.hero-content{
+.hero{
 
-    position:absolute;
+    min-height:100svh;
 
-    left:0;
+    display:flex;
 
-    right:0;
+    align-items:center;
 
-    bottom:105px;
+    justify-content:center;
 
-    padding:0 24px;
+    padding:40px 24px;
+
+}
+
+.container{
+
+    width:min(100%,460px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
 
     text-align:center;
 
-    z-index:5;
+}
+
+/* ===============================
+Logo
+=============================== */
+
+.logo{
+
+    width:92px;
+
+    height:92px;
+
+    object-fit:contain;
+
+    margin-bottom:28px;
 
 }
 
-.hero-content h3{
+/* ===============================
+Typography
+=============================== */
 
-    font-size:20px;
+h1{
 
-    font-weight:600;
+    font-size:clamp(2.5rem,5vw,4rem);
+
+    font-weight:700;
+
+    letter-spacing:-1px;
+
+    line-height:1.1;
+
+}
+
+.subtitle{
+
+    margin-top:18px;
+
+    color:var(--muted);
+
+    font-size:1.05rem;
+
+    line-height:1.7;
+
+    max-width:420px;
+
+}
+
+/* ===============================
+Primary Button
+=============================== */
+
+.primary-btn{
+
+    margin-top:40px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
 
     color:#fff;
 
-    letter-spacing:.8px;
+    padding:14px 34px;
 
-    text-transform:uppercase;
+    border-radius:999px;
 
-    text-shadow:
+    background:linear-gradient(
+    135deg,
+    #229ED9,
+    #4d8dff);
 
-        0 4px 18px rgba(0,0,0,.65);
+    font-weight:600;
+
+    transition:var(--transition);
+
+    box-shadow:
+    0 10px 35px rgba(34,158,217,.35);
 
 }
 
-/* =====================================
-   BUTTONS
-===================================== */
+.primary-btn:hover{
 
-.links{
+    transform:translateY(-2px);
 
-    margin-top:-72px;
+    box-shadow:
+    0 20px 45px rgba(34,158,217,.45);
 
-    padding:0 18px 36px;
+}
+
+/* ===============================
+Channel Buttons
+=============================== */
+
+.channels{
+
+    width:100%;
+
+    margin-top:42px;
+
+    display:flex;
+
+    flex-direction:column;
 
     gap:14px;
 
 }
 
-/* =====================================
-   BUTTON CARD
-===================================== */
+.channel-btn{
 
-.link-card{
+    width:100%;
+
+    height:58px;
 
     display:flex;
 
@@ -201,247 +251,96 @@ a{
 
     justify-content:space-between;
 
-    height:64px;
+    padding:0 20px;
 
-    padding:0 18px;
-
-    border-radius:18px;
-
-    background:rgba(255,255,255,.82);
-
-    backdrop-filter:blur(20px);
-
-    -webkit-backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.28);
-
-    box-shadow:
-        0 10px 28px rgba(0,0,0,.18);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
-
-}
-
-.link-card:hover{
-
-    transform:translateY(-3px);
-
-    background:rgba(255,255,255,.90);
-
-    box-shadow:
-        0 18px 38px rgba(0,0,0,.25);
-
-}
-
-.link-card:active{
-
-    transform:scale(.98);
-
-}
-
-/* =====================================
-   LEFT CONTENT
-===================================== */
-
-.left{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-/* =====================================
-   TELEGRAM ICON
-===================================== */
-
-.icon{
-
-    width:36px;
-
-    height:36px;
-
-    border-radius:12px;
-
-    background:#229ED9;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    text-decoration:none;
 
     color:#fff;
 
-    flex-shrink:0;
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    backdrop-filter:blur(20px);
+
+    transition:var(--transition);
 
 }
 
-.icon svg{
+.channel-btn:hover{
 
-    width:18px;
+    background:var(--surface-hover);
 
-    height:18px;
+    transform:translateY(-3px);
 
-}
+    border-color:rgba(255,255,255,.25);
 
-/* =====================================
-   BUTTON TEXT
-===================================== */
-
-.left span{
-
-    font-size:16px;
-
-    font-weight:600;
-
-    color:#111;
+    box-shadow:var(--shadow);
 
 }
-/* =====================================
-   ARROW
-===================================== */
 
 .arrow{
 
-    font-size:22px;
+    font-size:20px;
 
-    color:#666;
-
-    transition:.25s;
+    transition:.3s;
 
 }
 
-.link-card:hover .arrow{
+.channel-btn:hover .arrow{
 
-    transform:translateX(4px);
-
-    color:#111;
+    transform:translateX(5px);
 
 }
 
-/* =====================================
-   SHINE EFFECT
-===================================== */
+/* ===============================
+Footer
+=============================== */
 
-.link-card::before{
-
-    content:"";
+footer{
 
     position:absolute;
 
-    top:0;
+    bottom:30px;
 
-    left:-120%;
+    left:50%;
 
-    width:70%;
+    transform:translateX(-50%);
 
-    height:100%;
+    text-align:center;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.45),
-            transparent
-        );
+    color:rgba(255,255,255,.55);
 
-    transition:.9s ease;
+    font-size:.85rem;
 
 }
 
-.link-card:hover::before{
+footer small{
 
-    left:130%;
+    display:block;
 
-}
-
-/* =====================================
-   FADE ANIMATION
-===================================== */
-
-.hero{
-
-    opacity:0;
-
-    transform:translateY(20px);
-
-    animation:fadeUp .8s forwards;
+    margin-top:6px;
 
 }
 
-.link-card{
+/* ===============================
+Animation
+=============================== */
 
-    opacity:0;
-
-    transform:translateY(24px);
-
-    animation:fadeUp .8s forwards;
-
-}
-
-.link-card:nth-child(1){
-
-    animation-delay:.18s;
-
-}
-
-.link-card:nth-child(2){
-
-    animation-delay:.30s;
-
-}
-
-@keyframes fadeUp{
+@keyframes bgZoom{
 
     from{
 
-        opacity:0;
-
-        transform:translateY(24px);
+        transform:scale(1);
 
     }
 
     to{
 
-        opacity:1;
-
-        transform:translateY(0);
+        transform:scale(1.08);
 
     }
-
-}
-
-/* =====================================
-   SCROLLBAR
-===================================== */
-
-::-webkit-scrollbar{
-
-    width:8px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:#111;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:#444;
-
-    border-radius:999px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background:#666;
 
 }
