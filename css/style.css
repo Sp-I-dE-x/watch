@@ -1,53 +1,75 @@
-/* ===========================
+/* =====================================================
    XIPOP Landing Page
-   Mobile First
-=========================== */
+   Premium UI v2
+   Part 1 - Foundation
+===================================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =====================================================
+   Variables
+===================================================== */
 
 :root{
-    --bg:#0f1115;
-    --card:rgba(255,255,255,.10);
-    --border:rgba(255,255,255,.18);
 
-    --text:#ffffff;
-    --text2:rgba(255,255,255,.72);
+    --bg:#080808;
+
+    --card:rgba(18,18,18,.42);
+
+    --border:rgba(255,255,255,.12);
+
+    --white:#ffffff;
+
+    --text:#d8d8d8;
 
     --gold:#d7b46a;
-    --gold2:#f6d28f;
 
-    --radius:24px;
+    --gold-light:#f4d694;
 
-    --shadow:
-        0 10px 35px rgba(0,0,0,.45);
+    --radius:30px;
 
-    --blur:22px;
+    --transition:.35s ease;
+
 }
 
+/* =====================================================
+   Reset
+===================================================== */
+
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
 }
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
 body{
 
-    font-family:'Poppins',sans-serif;
+    font-family:"Poppins",sans-serif;
 
     background:var(--bg);
 
-    color:var(--text);
+    color:white;
+
+    overflow-x:hidden;
 
     min-height:100vh;
 
-    overflow-x:hidden;
 }
 
-/* ===========================
-Background
-=========================== */
+/* =====================================================
+   Background
+===================================================== */
 
 .background{
 
@@ -55,11 +77,14 @@ Background
 
     inset:0;
 
-    background:
-    linear-gradient(
-    rgba(0,0,0,.35),
-    rgba(0,0,0,.70)),
-    url("../assets/background.webp");
+    background-image:
+
+        linear-gradient(
+            rgba(0,0,0,.18),
+            rgba(0,0,0,.68)
+        ),
+
+        url("../assets/background.webp");
 
     background-size:cover;
 
@@ -67,51 +92,103 @@ Background
 
     background-repeat:no-repeat;
 
-    z-index:-5;
+    transform:scale(1.05);
 
-    transform:scale(1.04);
+    z-index:-6;
 
 }
 
-.overlay{
+/* Dark vignette */
+
+.background-gradient{
 
     position:fixed;
 
     inset:0;
 
     background:
-    radial-gradient(circle at top,
-    rgba(215,180,106,.10),
-    transparent 50%);
 
-    z-index:-4;
+    radial-gradient(circle at top,
+
+    rgba(215,180,106,.12),
+
+    transparent 45%),
+
+    linear-gradient(
+
+    to bottom,
+
+    rgba(0,0,0,.05),
+
+    rgba(0,0,0,.55)
+
+    );
+
+    z-index:-5;
 
 }
 
-.noise{
+/* subtle texture */
+
+.background-noise{
 
     position:fixed;
 
     inset:0;
 
-    opacity:.05;
-
-    pointer-events:none;
+    opacity:.04;
 
     background-image:
+
     radial-gradient(#fff 1px,transparent 1px);
 
     background-size:4px 4px;
 
-    z-index:-3;
+    z-index:-4;
+
+    pointer-events:none;
 
 }
 
-/* ===========================
-Layout
-=========================== */
+/* =====================================================
+   Cursor Glow
+===================================================== */
 
-.container{
+.cursor-glow{
+
+    position:fixed;
+
+    width:280px;
+
+    height:280px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(215,180,106,.15),
+
+    transparent 70%);
+
+    pointer-events:none;
+
+    transform:translate(-50%,-50%);
+
+    opacity:0;
+
+    z-index:-2;
+
+}
+
+/* =====================================================
+   Hero Layout
+===================================================== */
+
+.hero{
+
+    width:100%;
 
     min-height:100vh;
 
@@ -121,19 +198,33 @@ Layout
 
     align-items:flex-end;
 
-    padding:28px;
+    padding:26px;
 
 }
 
+/* Desktop */
+
+@media(min-width:900px){
+
+.hero{
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    padding-right:8vw;
+
+}
+
+}
+
+/* =====================================================
+   Glass Card
+===================================================== */
+
 .glass-card{
 
-    width:100%;
-
-    max-width:430px;
-
-    backdrop-filter:blur(var(--blur));
-
-    -webkit-backdrop-filter:blur(var(--blur));
+    width:min(520px,100%);
 
     background:var(--card);
 
@@ -141,47 +232,171 @@ Layout
 
     border-radius:var(--radius);
 
-    box-shadow:var(--shadow);
+    backdrop-filter:blur(30px);
 
-    padding:26px;
+    -webkit-backdrop-filter:blur(30px);
+
+    box-shadow:
+
+    0 25px 70px rgba(0,0,0,.45),
+
+    0 0 80px rgba(215,180,106,.08);
+
+    padding:40px 34px;
+
+    position:relative;
+
+    overflow:hidden;
 
 }
 
-/* ===========================
-Typography
-=========================== */
+/* Animated border */
 
-.logo{
+.glass-card::before{
 
-    text-align:center;
+    content:"";
 
-    margin-bottom:28px;
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    padding:1px;
+
+    background:
+
+    linear-gradient(
+
+    140deg,
+
+    rgba(255,255,255,.25),
+
+    transparent,
+
+    rgba(215,180,106,.25)
+
+    );
+
+    mask:
+
+    linear-gradient(#fff 0 0) content-box,
+
+    linear-gradient(#fff 0 0);
+
+    mask-composite:exclude;
+
+    pointer-events:none;
 
 }
 
-.logo h1{
+/* =====================================================
+   Badge
+===================================================== */
 
-    font-size:2rem;
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:var(--gold-light);
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    margin-bottom:26px;
+
+}
+
+.badge-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--gold-light);
+
+    box-shadow:
+
+        0 0 12px var(--gold-light);
+
+}
+
+/* =====================================================
+   Title
+===================================================== */
+
+.title{
+
+    font-size:3rem;
 
     font-weight:800;
 
     letter-spacing:2px;
 
-}
+    line-height:1.05;
 
-.logo p{
-
-    margin-top:8px;
-
-    color:var(--text2);
-
-    font-size:.95rem;
+    color:var(--white);
 
 }
 
-/* ===========================
-Buttons
-=========================== */
+.subtitle{
+
+    margin-top:16px;
+
+    color:var(--text);
+
+    font-size:1rem;
+
+    line-height:1.8;
+
+}
+
+/* =====================================================
+   Divider
+===================================================== */
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    margin:34px 0;
+
+    background:
+
+    linear-gradient(
+
+        to right,
+
+        transparent,
+
+        rgba(255,255,255,.22),
+
+        transparent
+
+    );
+
+}
+
+/* =====================================================
+   Button Group
+===================================================== */
 
 .button-group{
 
@@ -189,9 +404,13 @@ Buttons
 
     flex-direction:column;
 
-    gap:16px;
+    gap:18px;
 
 }
+
+/* =====================================================
+   Buttons
+===================================================== */
 
 .link-card{
 
@@ -199,41 +418,73 @@ Buttons
 
     align-items:center;
 
+    gap:18px;
+
+    min-height:78px;
+
+    padding:18px 22px;
+
     text-decoration:none;
 
-    color:#fff;
+    color:var(--white);
 
-    background:rgba(255,255,255,.08);
+    border-radius:22px;
 
-    border:1px solid rgba(255,255,255,.12);
+    background:
 
-    border-radius:18px;
+        rgba(255,255,255,.07);
 
-    padding:18px;
+    border:1px solid rgba(255,255,255,.10);
 
-    transition:.35s ease;
+    transition:
+
+        transform .35s ease,
+
+        border-color .35s ease,
+
+        background .35s ease,
+
+        box-shadow .35s ease;
+
+    position:relative;
+
+    overflow:hidden;
 
 }
 
 .link-card:hover{
 
-    transform:translateY(-3px);
+    transform:
 
-    border-color:var(--gold);
+        translateY(-6px);
 
-    background:rgba(255,255,255,.12);
+    border-color:
+
+        rgba(215,180,106,.55);
+
+    background:
+
+        rgba(255,255,255,.10);
+
+    box-shadow:
+
+        0 20px 50px rgba(0,0,0,.35);
 
 }
 
+/* =====================================================
+   Icon
+===================================================== */
+
 .icon{
 
-    width:52px;
+    width:58px;
 
-    height:52px;
+    height:58px;
 
-    border-radius:16px;
+    flex-shrink:0;
 
-    background:rgba(255,255,255,.08);
+    border-radius:18px;
 
     display:flex;
 
@@ -241,194 +492,558 @@ Buttons
 
     align-items:center;
 
-    margin-right:16px;
+    background:
+
+        rgba(255,255,255,.08);
 
 }
 
 .icon svg{
 
-    width:24px;
+    width:28px;
 
-    fill:var(--gold2);
+    height:28px;
+
+    fill:var(--gold-light);
 
 }
 
-.text{
+/* =====================================================
+   Text
+===================================================== */
+
+.content{
 
     flex:1;
 
 }
 
-.text h3{
+.content h3{
 
     font-size:1rem;
 
     font-weight:600;
 
+    margin-bottom:4px;
+
 }
 
-.text span{
+.content span{
 
-    display:block;
+    font-size:.86rem;
 
-    color:var(--text2);
+    color:var(--text);
 
-    margin-top:3px;
+}
+
+/* =====================================================
+   Arrow
+===================================================== */
+
+.arrow{
+
+    font-size:1.4rem;
+
+    color:var(--gold-light);
+
+    transition:
+
+        transform .35s ease;
+
+}
+
+.link-card:hover .arrow{
+
+    transform:
+
+        translateX(6px);
+
+}
+
+/* =====================================================
+   Footer
+===================================================== */
+
+.footer{
+
+    margin-top:34px;
+
+    text-align:center;
+
+}
+
+.footer p{
+
+    color:rgba(255,255,255,.55);
 
     font-size:.82rem;
 
 }
 
-.arrow{
+/* =====================================================
+   Mobile
+===================================================== */
 
-    font-size:22px;
+@media(max-width:480px){
 
-    color:var(--gold2);
+    .glass-card{
 
-}
+        padding:30px 22px;
 
-/* ===========================
-Footer
-=========================== */
+    }
 
-footer{
+    .title{
 
-    text-align:center;
+        font-size:2.2rem;
 
-    margin-top:24px;
+    }
 
-    color:var(--text2);
+    .link-card{
 
-    font-size:.8rem;
+        min-height:70px;
 
-}
+        padding:16px;
 
-/* ===========================
-Desktop
-=========================== */
+    }
 
-@media(min-width:900px){
+    .icon{
 
-.container{
+        width:52px;
 
-    justify-content:flex-end;
+        height:52px;
 
-    align-items:center;
-
-    padding-right:7vw;
+    }
 
 }
 
-.glass-card{
+/* =====================================================
+   XIPOP Landing Page
+   Premium UI v2
+   Part 3 - Animations & Polish
+===================================================== */
 
-    max-width:460px;
+/* ===============================
+   Fade In Animation
+================================ */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }
 
+.badge{
+
+    animation:fadeUp .6s ease forwards;
+
 }
 
-/* Reveal */
+.title{
+
+    animation:fadeUp .7s ease forwards;
+
+}
+
+.subtitle{
+
+    animation:fadeUp .8s ease forwards;
+
+}
+
+.divider{
+
+    animation:fadeUp .9s ease forwards;
+
+}
 
 .link-card{
 
-opacity:0;
+    opacity:0;
 
-transform:translateY(25px);
+    animation:fadeUp .8s ease forwards;
 
-animation:fade .8s forwards;
+}
+
+.link-card:nth-child(1){
+
+    animation-delay:.20s;
 
 }
 
 .link-card:nth-child(2){
 
-animation-delay:.15s;
+    animation-delay:.35s;
 
 }
 
 .link-card:nth-child(3){
 
-animation-delay:.3s;
+    animation-delay:.50s;
 
 }
 
-@keyframes fade{
+.footer{
 
-to{
+    animation:fadeUp 1s ease forwards;
 
-opacity:1;
-
-transform:none;
+    animation-delay:.7s;
 
 }
 
-}
-
-/* Ripple */
-
-.link-card{
-
-position:relative;
-
-overflow:hidden;
-
-}
+/* ===============================
+   Ripple Effect
+================================ */
 
 .ripple{
 
-position:absolute;
+    position:absolute;
 
-width:15px;
+    width:14px;
 
-height:15px;
+    height:14px;
 
-background:rgba(255,255,255,.4);
+    border-radius:50%;
 
-border-radius:50%;
+    background:rgba(255,255,255,.35);
 
-transform:translate(-50%,-50%) scale(0);
+    transform:translate(-50%,-50%) scale(0);
 
-animation:ripple .6s linear;
+    pointer-events:none;
 
-pointer-events:none;
+    animation:ripple .65s linear;
 
 }
 
 @keyframes ripple{
 
-to{
+    to{
 
-transform:translate(-50%,-50%) scale(18);
+        transform:translate(-50%,-50%) scale(18);
 
-opacity:0;
+        opacity:0;
+
+    }
 
 }
 
+/* ===============================
+   Glass Shine
+================================ */
+
+.glass-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-40%;
+
+    width:50%;
+
+    height:250%;
+
+    background:
+
+    linear-gradient(
+
+        rgba(255,255,255,0),
+
+        rgba(255,255,255,.08),
+
+        rgba(255,255,255,0)
+
+    );
+
+    transform:rotate(25deg);
+
+    animation:shine 10s linear infinite;
+
+    pointer-events:none;
+
 }
 
-/* Cursor Glow */
+@keyframes shine{
 
-.cursor-glow{
+    from{
 
-position:fixed;
+        left:-60%;
 
-width:280px;
+    }
 
-height:280px;
+    to{
 
-background:radial-gradient(circle,
-rgba(215,180,106,.16),
-transparent 70%);
+        left:150%;
 
-border-radius:50%;
+    }
 
-pointer-events:none;
+}
 
-transform:translate(-50%,-50%);
+/* ===============================
+   Floating Card
+================================ */
 
-opacity:0;
+@keyframes floating{
 
-transition:opacity .3s;
+    0%{
 
-z-index:-2;
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.glass-card{
+
+    animation:floating 7s ease-in-out infinite;
+
+}
+
+/* ===============================
+   Background Zoom
+================================ */
+
+.background{
+
+    animation:bgZoom 18s ease-in-out infinite alternate;
+
+}
+
+@keyframes bgZoom{
+
+    from{
+
+        transform:scale(1.05);
+
+    }
+
+    to{
+
+        transform:scale(1.10);
+
+    }
+
+}
+
+/* ===============================
+   Golden Glow
+================================ */
+
+.glass-card{
+
+    box-shadow:
+
+        0 30px 70px rgba(0,0,0,.50),
+
+        0 0 120px rgba(215,180,106,.08);
+
+}
+
+/* ===============================
+   Button Hover Glow
+================================ */
+
+.link-card:hover{
+
+    box-shadow:
+
+        0 18px 45px rgba(0,0,0,.45),
+
+        0 0 35px rgba(215,180,106,.12);
+
+}
+
+/* ===============================
+   Active Click
+================================ */
+
+.link-card:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===============================
+   Smooth Icon
+================================ */
+
+.icon{
+
+    transition:
+
+        transform .35s ease,
+
+        background .35s ease;
+
+}
+
+.link-card:hover .icon{
+
+    transform:rotate(8deg) scale(1.08);
+
+    background:
+
+    rgba(215,180,106,.15);
+
+}
+
+/* ===============================
+   Smooth Scrolling
+================================ */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+/* ===============================
+   Selection Color
+================================ */
+
+::selection{
+
+    background:rgba(215,180,106,.35);
+
+    color:#fff;
+
+}
+
+/* ===============================
+   Scrollbar
+================================ */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#555;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#888;
+
+}
+
+/* ===============================
+   Accessibility
+================================ */
+
+@media (prefers-reduced-motion: reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+/* ===============================
+   Large Desktop
+================================ */
+
+@media (min-width:1400px){
+
+    .glass-card{
+
+        max-width:560px;
+
+    }
+
+    .title{
+
+        font-size:3.4rem;
+
+    }
+
+}
+
+/* ===============================
+   Tablet
+================================ */
+
+@media (max-width:900px){
+
+    .hero{
+
+        justify-content:center;
+
+        align-items:flex-end;
+
+        padding:24px;
+
+    }
+
+}
+
+/* ===============================
+   Small Mobile
+================================ */
+
+@media (max-width:380px){
+
+    .title{
+
+        font-size:2rem;
+
+    }
+
+    .badge{
+
+        font-size:.75rem;
+
+    }
+
+    .content h3{
+
+        font-size:.95rem;
+
+    }
 
 }
