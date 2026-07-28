@@ -1,3 +1,7 @@
+/* =====================================
+   RESET
+===================================== */
+
 *{
     margin:0;
     padding:0;
@@ -9,46 +13,78 @@ html{
 }
 
 body{
+
     font-family:"Poppins",sans-serif;
+
     background:#111;
+
     color:#fff;
+
+    overflow-x:hidden;
+
 }
 
 img{
+
     display:block;
+
     width:100%;
+
 }
 
 a{
+
     text-decoration:none;
+
     color:inherit;
+
 }
+
+/* =====================================
+   PAGE
+===================================== */
 
 .page{
+
     width:100%;
-    max-width:650px;
-    margin:auto;
+
+    max-width:520px;
+
+    margin:0 auto;
+
     min-height:100vh;
-    padding-bottom:40px;
+
+    position:relative;
+
+    background:#111;
+
 }
 
-/* ===========================
+/* =====================================
    HERO
-=========================== */
+===================================== */
 
 .hero{
 
     position:relative;
 
-    height:82vh;
+    width:100%;
 
-    min-height:620px;
+    height:78vh;
+
+    min-height:540px;
+
+    max-height:760px;
 
     overflow:hidden;
 
     border-radius:0 0 34px 34px;
 
 }
+
+/* =====================================
+   HERO IMAGE
+===================================== */
 
 .hero img{
 
@@ -60,9 +96,21 @@ a{
 
     object-position:center top;
 
-    display:block;
+    transform:scale(1);
+
+    transition:transform .8s ease;
 
 }
+
+.hero:hover img{
+
+    transform:scale(1.03);
+
+}
+
+/* =====================================
+   OVERLAY
+===================================== */
 
 .overlay{
 
@@ -71,25 +119,25 @@ a{
     inset:0;
 
     background:
-
     linear-gradient(
 
         to bottom,
 
-        rgba(0,0,0,.05),
+        rgba(0,0,0,.02) 0%,
 
-        rgba(0,0,0,.10),
+        rgba(0,0,0,.05) 35%,
 
-        rgba(0,0,0,.25),
+        rgba(0,0,0,.15) 65%,
 
-        rgba(17,17,17,.90)
+        rgba(17,17,17,.75) 100%
 
     );
 
 }
-/* ===========================
-PROFILE
-=========================== */
+
+/* =====================================
+   TITLE
+===================================== */
 
 .hero-content{
 
@@ -99,29 +147,37 @@ PROFILE
 
     right:0;
 
-    bottom:110px;
-
-    text-align:center;
+    bottom:105px;
 
     padding:0 24px;
 
+    text-align:center;
+
+    z-index:5;
+
 }
 
-.hero-content h1{
+.hero-content h3{
 
-    font-size:34px;
+    font-size:20px;
 
-    font-weight:700;
+    font-weight:600;
 
     color:#fff;
 
-    text-shadow:0 6px 18px rgba(0,0,0,.6);
+    letter-spacing:.8px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+
+        0 4px 18px rgba(0,0,0,.65);
 
 }
 
-/* ===========================
-   LINKS
-=========================== */
+/* =====================================
+   BUTTONS
+===================================== */
 
 .links{
 
@@ -129,7 +185,7 @@ PROFILE
 
     z-index:20;
 
-    margin-top:-40px;   /* overlap hero image */
+    margin-top:-42px;
 
     padding:0 20px 40px;
 
@@ -141,13 +197,15 @@ PROFILE
 
 }
 
-/* ===========================
-   BUTTON
-=========================== */
+/* =====================================
+   BUTTON CARD
+===================================== */
 
 .link-card{
 
     position:relative;
+
+    overflow:hidden;
 
     display:flex;
 
@@ -168,10 +226,7 @@ PROFILE
     border:1px solid rgba(255,255,255,.35);
 
     box-shadow:
-
         0 18px 45px rgba(0,0,0,.25);
-
-    overflow:hidden;
 
     transition:
         transform .30s ease,
@@ -184,8 +239,7 @@ PROFILE
     transform:translateY(-6px);
 
     box-shadow:
-
-        0 28px 60px rgba(0,0,0,.35);
+        0 28px 65px rgba(0,0,0,.35);
 
 }
 
@@ -195,9 +249,9 @@ PROFILE
 
 }
 
-/* ===========================
-   LEFT SIDE
-=========================== */
+/* =====================================
+   LEFT CONTENT
+===================================== */
 
 .left{
 
@@ -209,15 +263,17 @@ PROFILE
 
 }
 
+/* =====================================
+   TELEGRAM ICON
+===================================== */
+
 .icon{
 
-    width:54px;
+    width:56px;
 
-    height:54px;
+    height:56px;
 
     border-radius:50%;
-
-    background:linear-gradient(135deg,#229ED9,#0088cc);
 
     display:flex;
 
@@ -225,13 +281,18 @@ PROFILE
 
     align-items:center;
 
-    color:#fff;
-
     flex-shrink:0;
 
-    box-shadow:
+    color:#fff;
 
-        0 10px 22px rgba(34,158,217,.45);
+    background:linear-gradient(
+        135deg,
+        #27A7E7,
+        #0088CC
+    );
+
+    box-shadow:
+        0 12px 24px rgba(39,167,231,.45);
 
 }
 
@@ -243,6 +304,10 @@ PROFILE
 
 }
 
+/* =====================================
+   BUTTON TEXT
+===================================== */
+
 .left span{
 
     font-size:18px;
@@ -253,31 +318,31 @@ PROFILE
 
 }
 
-/* ===========================
+/* =====================================
    ARROW
-=========================== */
+===================================== */
 
 .arrow{
 
     font-size:28px;
 
-    color:#777;
+    color:#666;
 
-    transition:.3s;
+    transition:.3s ease;
 
 }
 
 .link-card:hover .arrow{
 
-    transform:translateX(8px);
-
     color:#111;
+
+    transform:translateX(8px);
 
 }
 
-/* ===========================
+/* =====================================
    SHINE EFFECT
-=========================== */
+===================================== */
 
 .link-card::before{
 
@@ -294,20 +359,14 @@ PROFILE
     height:100%;
 
     background:
-
         linear-gradient(
-
             90deg,
-
             transparent,
-
             rgba(255,255,255,.45),
-
             transparent
-
         );
 
-    transition:.8s;
+    transition:.9s ease;
 
 }
 
@@ -317,72 +376,51 @@ PROFILE
 
 }
 
-/* ===========================
-FOOTER
-=========================== */
+/* =====================================
+   FADE ANIMATION
+===================================== */
 
-footer{
-
-    text-align:center;
-
-    margin-top:42px;
-
-    color:#8d8d8d;
-
-    font-size:14px;
-
-    letter-spacing:.5px;
-
-}
-
-/* ===========================
-ANIMATION
-=========================== */
-
-.hero,
-.profile,
-.link-card,
-footer{
+.hero{
 
     opacity:0;
 
-    transform:translateY(25px);
+    transform:translateY(20px);
 
     animation:fadeUp .8s forwards;
 
 }
 
-.profile{
+.link-card{
 
-    animation-delay:.15s;
+    opacity:0;
+
+    transform:translateY(24px);
+
+    animation:fadeUp .8s forwards;
 
 }
 
 .link-card:nth-child(1){
 
-    animation-delay:.25s;
+    animation-delay:.18s;
 
 }
 
 .link-card:nth-child(2){
 
-    animation-delay:.35s;
-
-}
-
-.link-card:nth-child(3){
-
-    animation-delay:.45s;
-
-}
-
-footer{
-
-    animation-delay:.55s;
+    animation-delay:.30s;
 
 }
 
 @keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(24px);
+
+    }
 
     to{
 
@@ -394,44 +432,32 @@ footer{
 
 }
 
-/* Ripple */
+/* =====================================
+   SCROLLBAR
+===================================== */
 
-.link-card{
+::-webkit-scrollbar{
 
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.link-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:0;
-
-    height:0;
-
-    left:50%;
-
-    top:50%;
-
-    background:rgba(0,0,0,.05);
-
-    border-radius:50%;
-
-    transform:translate(-50%,-50%);
-
-    transition:.6s;
+    width:8px;
 
 }
 
-.link-card:hover::before{
+::-webkit-scrollbar-track{
 
-    width:500px;
+    background:#111;
 
-    height:500px;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#444;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#666;
 
 }
