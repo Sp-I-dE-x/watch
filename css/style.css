@@ -1,1 +1,436 @@
+/* ======================================================
+   XIPOP V3
+   Base Styles
+====================================================== */
 
+:root{
+
+    --bg:#000000;
+    --glass:rgba(255,255,255,.08);
+    --glass-border:rgba(255,255,255,.16);
+
+    --text:#ffffff;
+    --muted:rgba(255,255,255,.72);
+
+    --gold:#e8c76c;
+
+    --radius:32px;
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.45);
+
+    --transition:.35s cubic-bezier(.2,.8,.2,1);
+
+}
+
+/* ====================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* ====================================================== */
+/* BACKGROUND */
+/* ====================================================== */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:url("../assets/background.webp");
+
+    background-size:cover;
+
+    background-repeat:no-repeat;
+
+    background-position:center top;
+
+    z-index:-5;
+
+    transform:scale(1.05);
+
+}
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-4;
+
+    background:
+    linear-gradient(
+        180deg,
+
+        rgba(0,0,0,.10) 0%,
+
+        rgba(0,0,0,.35) 35%,
+
+        rgba(0,0,0,.72) 72%,
+
+        rgba(0,0,0,.95) 100%
+    );
+
+}
+
+.noise{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-3;
+
+    background:url("../assets/noise.png");
+
+    opacity:.045;
+
+    pointer-events:none;
+
+}
+
+.gold-light{
+
+    position:fixed;
+
+    width:700px;
+
+    height:700px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+    rgba(232,199,108,.16),
+    transparent 72%);
+
+    bottom:-220px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    filter:blur(80px);
+
+    pointer-events:none;
+
+    z-index:-2;
+
+}
+
+.cursor-light{
+
+    position:fixed;
+
+    width:240px;
+
+    height:240px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+    rgba(255,255,255,.10),
+    transparent 70%);
+
+    pointer-events:none;
+
+    z-index:5;
+
+    opacity:0;
+
+}
+
+/* ====================================================== */
+/* HERO */
+/* ====================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    padding:
+
+    120px
+    22px
+    40px;
+
+}
+
+/* ====================================================== */
+/* GLASS CARD */
+/* ====================================================== */
+
+.glass-card{
+
+    width:100%;
+
+    max-width:560px;
+
+    background:var(--glass);
+
+    border:1px solid var(--glass-border);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:34px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* ====================================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+
+    8px
+    16px;
+
+    border-radius:999px;
+
+    background:
+
+    rgba(255,255,255,.08);
+
+    border:
+
+    1px solid
+    rgba(255,255,255,.10);
+
+    color:var(--gold);
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+}
+
+/* ====================================================== */
+
+.logo{
+
+    margin-top:26px;
+
+    font-size:3rem;
+
+    font-weight:800;
+
+    letter-spacing:.14em;
+
+    line-height:1;
+
+}
+
+.subtitle{
+
+    margin-top:16px;
+
+    color:var(--muted);
+
+    font-size:1rem;
+
+    line-height:1.8;
+
+    max-width:420px;
+
+}
+
+/* ====================================================== */
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    margin:
+
+    30px
+    0;
+
+    background:
+
+    linear-gradient(
+    90deg,
+
+    transparent,
+
+    rgba(255,255,255,.24),
+
+    transparent);
+
+}
+
+/* ====================================================== */
+/* TELEGRAM CARDS */
+/* ====================================================== */
+
+.links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.telegram-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    text-decoration:none;
+
+    color:inherit;
+
+    padding:18px;
+
+    border-radius:22px;
+
+    background:
+
+    rgba(255,255,255,.05);
+
+    border:
+
+    1px solid
+    rgba(255,255,255,.10);
+
+    transition:var(--transition);
+
+}
+
+.card-icon{
+
+    width:58px;
+
+    height:58px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:18px;
+
+    background:
+
+    rgba(255,255,255,.08);
+
+    flex-shrink:0;
+
+}
+
+.card-icon img{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.card-content{
+
+    flex:1;
+
+}
+
+.card-content h3{
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+}
+
+.card-content p{
+
+    margin-top:6px;
+
+    font-size:.90rem;
+
+    color:var(--muted);
+
+}
+
+.card-arrow{
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+    color:var(--gold);
+
+}
+
+/* ====================================================== */
+
+footer{
+
+    margin-top:34px;
+
+    text-align:center;
+
+    color:rgba(255,255,255,.45);
+
+    font-size:.82rem;
+
+}
