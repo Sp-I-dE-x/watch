@@ -371,3 +371,45 @@ a:focus-visible{
     color:#fff;
 
 }
+
+/* ===============================
+   Page Load
+=============================== */
+
+body{
+
+    opacity:0;
+
+    transition:opacity .5s ease;
+
+}
+
+body.loaded{
+
+    opacity:1;
+
+}
+
+/* ===============================
+   Animation Defaults
+=============================== */
+
+.badge,
+h1,
+.subtitle,
+.channel-btn,
+footer{
+
+    will-change:transform, opacity;
+
+}
+
+/* ===============================
+   Arrow Animation
+=============================== */
+
+.arrow{
+
+    transition:transform .3s ease;
+
+}
