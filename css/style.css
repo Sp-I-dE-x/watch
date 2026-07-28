@@ -1,30 +1,3 @@
-/* ======================================================
-   XIPOP V3
-   Base Styles
-====================================================== */
-
-:root{
-
-    --bg:#000000;
-    --glass:rgba(255,255,255,.08);
-    --glass-border:rgba(255,255,255,.16);
-
-    --text:#ffffff;
-    --muted:rgba(255,255,255,.72);
-
-    --gold:#e8c76c;
-
-    --radius:32px;
-
-    --shadow:
-        0 20px 60px rgba(0,0,0,.45);
-
-    --transition:.35s cubic-bezier(.2,.8,.2,1);
-
-}
-
-/* ====================================================== */
-
 *{
     margin:0;
     padding:0;
@@ -32,304 +5,121 @@
 }
 
 html{
-
     scroll-behavior:smooth;
-
 }
 
 body{
+    font-family:"Poppins",sans-serif;
+    background:#111;
+    color:#fff;
+}
 
-    font-family:'Inter',sans-serif;
+img{
+    display:block;
+    width:100%;
+}
 
-    background:var(--bg);
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
-    color:var(--text);
-
+.page{
+    width:100%;
+    max-width:650px;
+    margin:auto;
     min-height:100vh;
-
-    overflow-x:hidden;
-
-    position:relative;
-
+    padding-bottom:40px;
 }
 
-/* ====================================================== */
-/* BACKGROUND */
-/* ====================================================== */
-
-.background{
-
-    position:fixed;
-
-    inset:0;
-
-    background-image:url("../assets/background.webp");
-
-    background-size:cover;
-
-    background-repeat:no-repeat;
-
-    background-position:center top;
-
-    z-index:-5;
-
-    transform:scale(1.05);
-
-}
-
-.overlay{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:-4;
-
-    background:
-    linear-gradient(
-        180deg,
-
-        rgba(0,0,0,.10) 0%,
-
-        rgba(0,0,0,.35) 35%,
-
-        rgba(0,0,0,.72) 72%,
-
-        rgba(0,0,0,.95) 100%
-    );
-
-}
-
-.noise{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:-3;
-
-    background:url("../assets/noise.png");
-
-    opacity:.045;
-
-    pointer-events:none;
-
-}
-
-.gold-light{
-
-    position:fixed;
-
-    width:700px;
-
-    height:700px;
-
-    border-radius:50%;
-
-    background:
-
-    radial-gradient(circle,
-    rgba(232,199,108,.16),
-    transparent 72%);
-
-    bottom:-220px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    filter:blur(80px);
-
-    pointer-events:none;
-
-    z-index:-2;
-
-}
-
-.cursor-light{
-
-    position:fixed;
-
-    width:320px;
-
-    height:320px;
-
-    border-radius:50%;
-
-    background:
-    radial-gradient(
-        circle,
-        rgba(255,255,255,.12) 0%,
-        rgba(232,199,108,.08) 30%,
-        transparent 72%
-    );
-
-    transform:translate(-50%,-50%);
-
-    filter:blur(28px);
-
-    pointer-events:none;
-
-    z-index:3;
-
-    opacity:0;
-
-    transition:opacity .35s ease;
-
-    will-change:left,top;
-
-}
-/* ====================================================== */
-/* HERO */
-/* ====================================================== */
+/* ===========================
+   HERO
+=========================== */
 
 .hero{
+    width:100%;
+    aspect-ratio:9/12;
+    overflow:hidden;
+    position:relative;
+    border-radius:0 0 35px 35px;
+}
 
-    min-height:100vh;
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    transition:.6s;
+}
 
-    display:flex;
+.hero:hover img{
+    transform:scale(1.03);
+}
 
-    justify-content:center;
+.hero-overlay{
 
-    align-items:flex-end;
+    position:absolute;
+    inset:0;
 
-    padding:
-
-    120px
-    22px
-    40px;
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.25),
+        rgba(17,17,17,.95)
+    );
 
 }
 
-/* ====================================================== */
-/* GLASS CARD */
-/* ====================================================== */
+/* ===========================
+PROFILE
+=========================== */
 
-.glass-card{
+.profile{
 
-    width:100%;
-
-    max-width:560px;
-
-    background:var(--glass);
-
-    border:1px solid var(--glass-border);
-
-    backdrop-filter:blur(24px);
-
-    -webkit-backdrop-filter:blur(24px);
-
-    border-radius:var(--radius);
-
-    box-shadow:var(--shadow);
-
-    padding:34px;
+    margin-top:-55px;
 
     position:relative;
 
-    overflow:hidden;
+    z-index:5;
+
+    padding:0 28px;
+
+    text-align:center;
 
 }
 
-/* ====================================================== */
+.profile h1{
 
-.badge{
+    font-size:38px;
 
-    display:inline-flex;
+    font-weight:700;
 
-    align-items:center;
-
-    justify-content:center;
-
-    padding:
-
-    8px
-    16px;
-
-    border-radius:999px;
-
-    background:
-
-    rgba(255,255,255,.08);
-
-    border:
-
-    1px solid
-    rgba(255,255,255,.10);
-
-    color:var(--gold);
-
-    font-size:.82rem;
-
-    font-weight:600;
-
-    letter-spacing:.08em;
-
-    text-transform:uppercase;
+    letter-spacing:2px;
 
 }
 
-/* ====================================================== */
+.profile p{
 
-.logo{
+    margin-top:8px;
 
-    margin-top:26px;
+    color:#bfbfbf;
 
-    font-size:3rem;
+    font-size:16px;
 
-    font-weight:800;
+    font-weight:400;
 
-    letter-spacing:.14em;
-
-    line-height:1;
+    line-height:1.6;
 
 }
 
-.subtitle{
-
-    margin-top:16px;
-
-    color:var(--muted);
-
-    font-size:1rem;
-
-    line-height:1.8;
-
-    max-width:420px;
-
-}
-
-/* ====================================================== */
-
-.divider{
-
-    width:100%;
-
-    height:1px;
-
-    margin:
-
-    30px
-    0;
-
-    background:
-
-    linear-gradient(
-    90deg,
-
-    transparent,
-
-    rgba(255,255,255,.24),
-
-    transparent);
-
-}
-
-/* ====================================================== */
-/* TELEGRAM CARDS */
-/* ====================================================== */
+/* ===========================
+LINKS
+=========================== */
 
 .links{
+
+    padding:35px 20px 0;
 
     display:flex;
 
@@ -339,114 +129,180 @@ body{
 
 }
 
-.telegram-card{
+.link-card{
+
+    background:#fff;
+
+    color:#111;
+
+    border-radius:22px;
+
+    padding:20px 22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    transition:.25s;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.link-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.28);
+
+}
+
+.left{
 
     display:flex;
 
     align-items:center;
 
-    gap:18px;
-
-    text-decoration:none;
-
-    color:inherit;
-
-    padding:18px;
-
-    border-radius:22px;
-
-    background:
-
-    rgba(255,255,255,.05);
-
-    border:
-
-    1px solid
-    rgba(255,255,255,.10);
-
-    transition:var(--transition);
+    gap:16px;
 
 }
 
-.card-icon{
+.icon{
 
-    width:58px;
+    width:46px;
 
-    height:58px;
+    height:46px;
 
-    display:grid;
+    border-radius:50%;
 
-    place-items:center;
+    background:#0088cc;
 
-    border-radius:18px;
+    color:#fff;
 
-    background:
+    display:flex;
 
-    rgba(255,255,255,.08);
+    align-items:center;
+
+    justify-content:center;
 
     flex-shrink:0;
 
 }
 
-.card-icon img{
+.left span{
 
-    width:28px;
+    font-size:17px;
 
-    height:28px;
-
-}
-
-.card-content{
-
-    flex:1;
+    font-weight:600;
 
 }
 
-.card-content h3{
+.arrow{
 
-    font-size:1.05rem;
+    font-size:24px;
 
-    font-weight:700;
+    font-weight:600;
 
-}
+    opacity:.6;
 
-.card-content p{
-
-    margin-top:6px;
-
-    font-size:.90rem;
-
-    color:var(--muted);
+    transition:.25s;
 
 }
 
-.card-arrow{
+.link-card:hover .arrow{
 
-    font-size:1.4rem;
+    transform:translateX(6px);
 
-    font-weight:700;
-
-    color:var(--gold);
+    opacity:1;
 
 }
 
-/* ====================================================== */
+/* ===========================
+FOOTER
+=========================== */
 
 footer{
 
-    margin-top:34px;
-
     text-align:center;
 
-    color:rgba(255,255,255,.45);
+    margin-top:42px;
 
-    font-size:.82rem;
+    color:#8d8d8d;
+
+    font-size:14px;
+
+    letter-spacing:.5px;
 
 }
 
-/* Ripple Effect */
+/* ===========================
+ANIMATION
+=========================== */
 
-.telegram-card{
+.hero,
+.profile,
+.link-card,
+footer{
+
+    opacity:0;
+
+    transform:translateY(25px);
+
+    animation:fadeUp .8s forwards;
+
+}
+
+.profile{
+
+    animation-delay:.15s;
+
+}
+
+.link-card:nth-child(1){
+
+    animation-delay:.25s;
+
+}
+
+.link-card:nth-child(2){
+
+    animation-delay:.35s;
+
+}
+
+.link-card:nth-child(3){
+
+    animation-delay:.45s;
+
+}
+
+footer{
+
+    animation-delay:.55s;
+
+}
+
+@keyframes fadeUp{
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Ripple */
+
+.link-card{
 
     position:relative;
 
@@ -454,32 +310,34 @@ footer{
 
 }
 
-.ripple{
+.link-card::before{
+
+    content:"";
 
     position:absolute;
 
-    width:20px;
+    width:0;
 
-    height:20px;
+    height:0;
+
+    left:50%;
+
+    top:50%;
+
+    background:rgba(0,0,0,.05);
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.35);
+    transform:translate(-50%,-50%);
 
-    transform:translate(-50%,-50%) scale(0);
-
-    animation:rippleAnimation .6s linear;
+    transition:.6s;
 
 }
 
-@keyframes rippleAnimation{
+.link-card:hover::before{
 
-    to{
+    width:500px;
 
-        transform:translate(-50%,-50%) scale(18);
-
-        opacity:0;
-
-    }
+    height:500px;
 
 }
