@@ -1,318 +1,343 @@
-/* ======================================================
-   XIPOP V3
-   Responsive
-====================================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-/* ======================================================
-   Large Desktop (1440px+)
-====================================================== */
+html{
+    scroll-behavior:smooth;
+}
 
-@media (min-width:1440px){
+body{
+    font-family:"Poppins",sans-serif;
+    background:#111;
+    color:#fff;
+}
+
+img{
+    display:block;
+    width:100%;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.page{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    min-height:100vh;
+    padding-bottom:40px;
+}
+
+/* ===========================
+   HERO
+=========================== */
 
 .hero{
+    width:100%;
+    aspect-ratio:9/12;
+    overflow:hidden;
+    position:relative;
+    border-radius:0 0 35px 35px;
+}
 
-    justify-content:flex-end;
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    transition:.6s;
+}
+
+.hero:hover img{
+    transform:scale(1.03);
+}
+
+.hero-overlay{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.25),
+        rgba(17,17,17,.95)
+    );
+
+}
+
+/* ===========================
+PROFILE
+=========================== */
+
+.profile{
+
+    margin-top:-55px;
+
+    position:relative;
+
+    z-index:5;
+
+    padding:0 28px;
+
+    text-align:center;
+
+}
+
+.profile h1{
+
+    font-size:38px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.profile p{
+
+    margin-top:8px;
+
+    color:#bfbfbf;
+
+    font-size:16px;
+
+    font-weight:400;
+
+    line-height:1.6;
+
+}
+
+/* ===========================
+LINKS
+=========================== */
+
+.links{
+
+    padding:35px 20px 0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.link-card{
+
+    background:#fff;
+
+    color:#111;
+
+    border-radius:22px;
+
+    padding:20px 22px;
+
+    display:flex;
+
+    justify-content:space-between;
 
     align-items:center;
 
-    padding-right:8%;
+    transition:.25s;
 
-    padding-left:8%;
+    box-shadow:
 
-}
-
-.glass-card{
-
-    max-width:580px;
+    0 15px 35px rgba(0,0,0,.18);
 
 }
 
-.background{
+.link-card:hover{
 
-    background-position:25% center;
+    transform:translateY(-4px);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.28);
 
 }
 
-}
+.left{
 
-/* ======================================================
-   Desktop
-====================================================== */
-
-@media (min-width:992px){
-
-.hero{
-
-    justify-content:flex-end;
+    display:flex;
 
     align-items:center;
 
-    padding:
-
-    60px
-    7%;
+    gap:16px;
 
 }
 
-.background{
+.icon{
 
-    background-position:28% center;
+    width:46px;
 
-}
+    height:46px;
 
-.glass-card{
+    border-radius:50%;
 
-    width:520px;
+    background:#0088cc;
 
-    margin-right:2vw;
+    color:#fff;
 
-}
+    display:flex;
 
-.logo{
+    align-items:center;
 
-    font-size:4rem;
+    justify-content:center;
 
-}
-
-.subtitle{
-
-    font-size:1.08rem;
+    flex-shrink:0;
 
 }
 
-}
+.left span{
 
-/* ======================================================
-   Tablet
-====================================================== */
+    font-size:17px;
 
-@media (max-width:991px){
-
-.hero{
-
-    align-items:flex-end;
-
-    padding:
-
-    120px
-    26px
-    34px;
+    font-weight:600;
 
 }
 
-.background{
+.arrow{
 
-    background-position:center top;
+    font-size:24px;
 
-}
+    font-weight:600;
 
-.glass-card{
+    opacity:.6;
 
-    max-width:620px;
-
-}
+    transition:.25s;
 
 }
 
-/* ======================================================
-   Mobile
-====================================================== */
+.link-card:hover .arrow{
 
-@media (max-width:768px){
+    transform:translateX(6px);
 
-.hero{
-
-    padding:
-
-    140px
-    18px
-    22px;
+    opacity:1;
 
 }
 
-.glass-card{
+/* ===========================
+FOOTER
+=========================== */
 
-    padding:28px;
+footer{
 
-    border-radius:28px;
+    text-align:center;
 
-}
+    margin-top:42px;
 
-.logo{
+    color:#8d8d8d;
 
-    font-size:2.5rem;
+    font-size:14px;
 
-}
-
-.subtitle{
-
-    font-size:.95rem;
+    letter-spacing:.5px;
 
 }
 
-.telegram-card{
+/* ===========================
+ANIMATION
+=========================== */
 
-    padding:16px;
+.hero,
+.profile,
+.link-card,
+footer{
 
-}
+    opacity:0;
 
-.card-icon{
+    transform:translateY(25px);
 
-    width:54px;
-
-    height:54px;
-
-}
-
-.card-icon img{
-
-    width:26px;
-
-    height:26px;
+    animation:fadeUp .8s forwards;
 
 }
 
-}
+.profile{
 
-/* ======================================================
-   Small Phones
-====================================================== */
-
-@media (max-width:480px){
-
-.hero{
-
-    padding:
-
-    160px
-    14px
-    18px;
+    animation-delay:.15s;
 
 }
 
-.glass-card{
+.link-card:nth-child(1){
 
-    padding:24px;
-
-    border-radius:24px;
+    animation-delay:.25s;
 
 }
 
-.logo{
+.link-card:nth-child(2){
 
-    font-size:2.2rem;
-
-    letter-spacing:.10em;
+    animation-delay:.35s;
 
 }
 
-.badge{
+.link-card:nth-child(3){
 
-    font-size:.72rem;
-
-    padding:
-
-    7px
-    14px;
-
-}
-
-.subtitle{
-
-    font-size:.90rem;
-
-    line-height:1.7;
-
-}
-
-.telegram-card{
-
-    gap:14px;
-
-    padding:15px;
-
-    border-radius:18px;
-
-}
-
-.card-icon{
-
-    width:48px;
-
-    height:48px;
-
-    border-radius:15px;
-
-}
-
-.card-icon img{
-
-    width:22px;
-
-    height:22px;
-
-}
-
-.card-content h3{
-
-    font-size:.96rem;
-
-}
-
-.card-content p{
-
-    font-size:.82rem;
-
-}
-
-.card-arrow{
-
-    font-size:1.2rem;
+    animation-delay:.45s;
 
 }
 
 footer{
 
-    margin-top:26px;
+    animation-delay:.55s;
 
 }
 
-}
+@keyframes fadeUp{
 
-/* ======================================================
-   Landscape Phones
-====================================================== */
+    to{
 
-@media (max-height:650px){
+        opacity:1;
 
-.hero{
+        transform:translateY(0);
 
-    padding-top:70px;
+    }
 
 }
 
-.logo{
+/* Ripple */
 
-    font-size:2.3rem;
+.link-card{
 
-}
+    position:relative;
 
-.subtitle{
-
-    margin-top:10px;
+    overflow:hidden;
 
 }
 
-.divider{
+.link-card::before{
 
-    margin:22px 0;
+    content:"";
+
+    position:absolute;
+
+    width:0;
+
+    height:0;
+
+    left:50%;
+
+    top:50%;
+
+    background:rgba(0,0,0,.05);
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+
+    transition:.6s;
 
 }
 
-.telegram-card{
+.link-card:hover::before{
 
-    padding:14px;
+    width:500px;
 
-}
+    height:500px;
 
 }
