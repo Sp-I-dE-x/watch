@@ -344,3 +344,45 @@ Animation
     }
 
 }
+
+/* ===============================
+   Page Fade
+=============================== */
+
+body{
+
+    opacity:0;
+
+    transition:opacity .6s ease;
+
+}
+
+body.loaded{
+
+    opacity:1;
+
+}
+
+/* ===============================
+   Focus States
+=============================== */
+
+a:focus-visible{
+
+    outline:2px solid #229ED9;
+
+    outline-offset:4px;
+
+}
+
+/* ===============================
+   Selection
+=============================== */
+
+::selection{
+
+    background:#229ED9;
+
+    color:#fff;
+
+}
