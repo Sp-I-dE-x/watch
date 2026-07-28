@@ -1,0 +1,504 @@
+/* ==========================================================
+   PREMIUM LANDING PAGE
+   Version 1.0
+   ========================================================== */
+
+/* ===============================
+   CSS VARIABLES
+================================= */
+
+:root {
+
+    --bg: #050505;
+
+    --card: rgba(255,255,255,.08);
+
+    --border: rgba(255,255,255,.15);
+
+    --text: #ffffff;
+
+    --text2: #bdbdbd;
+
+    --accent: #ff3d7f;
+
+    --shadow: 0 30px 80px rgba(0,0,0,.45);
+
+    --blur: 22px;
+
+    --radius: 28px;
+
+    --transition: .35s ease;
+
+}
+
+
+/* ===============================
+   RESET
+================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    color:var(--text);
+
+    background:var(--bg);
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+}
+
+
+/* ===============================
+   BACKGROUND
+================================= */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:url("assets/background.webp");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    transform:scale(1.05);
+
+    animation:zoomBackground 30s linear infinite alternate;
+
+    z-index:-3;
+
+}
+
+
+/* dark overlay */
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        rgba(0,0,0,.35),
+
+        rgba(0,0,0,.55),
+
+        rgba(0,0,0,.75)
+
+    );
+
+    z-index:-2;
+
+}
+
+
+/* subtle grain */
+
+.noise{
+
+    position:fixed;
+
+    inset:0;
+
+    opacity:.05;
+
+    background-image:
+
+    radial-gradient(#fff 1px, transparent 1px);
+
+    background-size:4px 4px;
+
+    z-index:-1;
+
+}
+
+
+/* ===============================
+   HERO
+================================= */
+
+.hero{
+
+    width:100%;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+
+/* ===============================
+   GLASS CARD
+================================= */
+
+.glass-card{
+
+    width:min(500px,100%);
+
+    padding:42px;
+
+    border-radius:var(--radius);
+
+    backdrop-filter:blur(var(--blur));
+
+    -webkit-backdrop-filter:blur(var(--blur));
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+
+    animation:fadeUp .8s ease;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* glow */
+
+.glass-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-1px;
+
+    background:
+
+    linear-gradient(
+
+        130deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.glass-card:hover::before{
+
+    animation:shine 2s linear;
+
+}
+
+
+/* ===============================
+   TITLE
+================================= */
+
+h1{
+
+    font-size:3rem;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+
+    margin-bottom:10px;
+
+}
+
+p{
+
+    color:var(--text2);
+
+    font-size:1rem;
+
+    line-height:1.7;
+
+}
+
+
+/* ===============================
+   DIVIDER
+================================= */
+
+.divider{
+
+    width:70px;
+
+    height:3px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        var(--accent),
+
+        transparent
+
+    );
+
+    margin:34px auto;
+
+    border-radius:50px;
+
+}
+
+
+/* ===============================
+   BUTTONS
+================================= */
+
+.buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+/* individual button */
+
+.btn{
+
+    text-decoration:none;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(16px);
+
+    transition:var(--transition);
+
+    font-size:1rem;
+
+    font-weight:500;
+
+}
+
+
+/* hover */
+
+.btn:hover{
+
+    transform:translateY(-4px) scale(1.02);
+
+    background:rgba(255,255,255,.12);
+
+    border-color:rgba(255,255,255,.25);
+
+    box-shadow:
+
+        0 15px 35px rgba(0,0,0,.35);
+
+}
+
+
+/* arrow */
+
+.arrow{
+
+    font-size:1.2rem;
+
+    transition:.3s;
+
+}
+
+.btn:hover .arrow{
+
+    transform:translateX(8px);
+
+}
+
+
+/* ===============================
+   CURSOR GLOW
+================================= */
+
+.cursor-glow{
+
+    position:fixed;
+
+    width:280px;
+
+    height:280px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(
+
+        rgba(255,255,255,.10),
+
+        transparent 70%
+
+    );
+
+    transform:translate(-50%,-50%);
+
+    z-index:0;
+
+}
+
+
+/* ===============================
+   ANIMATIONS
+================================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+@keyframes shine{
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+@keyframes zoomBackground{
+
+    from{
+
+        transform:scale(1.05);
+
+    }
+
+    to{
+
+        transform:scale(1.12);
+
+    }
+
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================= */
+
+@media(max-width:768px){
+
+    .glass-card{
+
+        padding:32px;
+
+        border-radius:22px;
+
+    }
+
+    h1{
+
+        font-size:2.2rem;
+
+    }
+
+    .btn{
+
+        padding:16px 18px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .hero{
+
+        padding:18px;
+
+    }
+
+    .glass-card{
+
+        padding:26px;
+
+    }
+
+    h1{
+
+        font-size:1.9rem;
+
+        letter-spacing:2px;
+
+    }
+
+    p{
+
+        font-size:.92rem;
+
+    }
+
+}
