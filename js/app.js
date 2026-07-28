@@ -1,41 +1,57 @@
-// ===============================
-// Button click animation
-// ===============================
+/* ===========================================
+   Premium Landing Page
+   app.js
+=========================================== */
 
-document.querySelectorAll(".link-card").forEach(card => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    card.addEventListener("mousedown", () => {
+    // Fade in page
+    document.body.classList.add("loaded");
 
-        card.style.transform = "scale(.98)";
+    // Smooth scroll for Join Now button
+    const joinButton = document.querySelector(".primary-btn");
+
+    if (joinButton) {
+
+        joinButton.addEventListener("click", function (e) {
+
+            const target = document.querySelector("#channels");
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        });
+
+    }
+
+    // Keyboard accessibility
+    document.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("keyup", e => {
+
+            if (e.key === "Enter") {
+
+                link.click();
+
+            }
+
+        });
 
     });
 
-    card.addEventListener("mouseup", () => {
+    // Update footer year automatically
+    const year = document.querySelector(".year");
 
-        card.style.transform = "";
+    if (year) {
 
-    });
+        year.textContent = new Date().getFullYear();
 
-    card.addEventListener("mouseleave", () => {
-
-        card.style.transform = "";
-
-    });
-
-});
-
-// ===============================
-// Hero image subtle parallax
-// ===============================
-
-const heroImage = document.querySelector(".hero img");
-
-window.addEventListener("scroll", () => {
-
-    if (!heroImage) return;
-
-    const offset = window.scrollY * 0.08;
-
-    heroImage.style.transform = `translateY(${offset}px) scale(1.03)`;
+    }
 
 });
