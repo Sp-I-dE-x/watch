@@ -271,13 +271,14 @@ Channel Buttons
 
 .channel-btn:hover{
 
-    background:var(--surface-hover);
+    transform:translateY(-2px);
 
-    transform:translateY(-3px);
+    background:rgba(255,255,255,.09);
 
-    border-color:rgba(255,255,255,.25);
+    border-color:rgba(255,255,255,.24);
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.30);
 
 }
 
