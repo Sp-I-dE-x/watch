@@ -1,90 +1,142 @@
-/* ==========================================
-   Premium Landing Page
-========================================== */
+// ==============================
+// Premium Landing Page Effects
+// ==============================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Remove loading state
-    document.body.classList.add("loaded");
+    const buttons = document.querySelectorAll(".channel-btn");
 
-    // Update footer year only if element exists
-    const year = document.querySelector(".year");
+    // Staggered appearance
+    buttons.forEach((button, index) => {
 
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
+        button.style.animationDelay = `${index * 0.15}s`;
 
-    // Animate cards
-    const cards = document.querySelectorAll(".channel-btn");
+    });
 
-    cards.forEach((card, index) => {
+    // Ripple Effect
+    buttons.forEach(button => {
 
-        card.style.opacity = "0";
-        card.style.transform = "translateY(35px)";
+        button.addEventListener("click", function (e) {
 
-        setTimeout(() => {
+            const ripple = document.createElement("span");
 
-            card.style.transition =
-                "opacity .6s ease, transform .6s ease";
+            const rect = this.getBoundingClientRect();
 
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
+            const size = Math.max(rect.width, rect.height);
 
-        }, 250 + index * 120);
+            ripple.style.width = ripple.style.height = `${size}px`;
+
+            ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+
+            ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+            ripple.classList.add("ripple");
+
+            this.appendChild(ripple);
+
+            ripple.addEventListener("animationend", () => {
+
+                ripple.remove();
+
+            });
+
+        });
+
+    });
+
+    // Floating Hover Effect
+    buttons.forEach(button => {
+
+        button.addEventListener("mousemove", e => {
+
+            const rect = button.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const rotateY = ((x / rect.width) - 0.5) * 8;
+            const rotateX = ((rect.height / 2 - y) / rect.height) * 8;
+
+            button.style.transform = `
+                perspective(800px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                translateY(-6px)
+                scale(1.02)
+            `;
+
+        });
+
+        button.addEventListener("mouseleave", () => {
+
+            button.style.transform = "";
+
+        });
 
     });
 
 });
 
-/* ==========================================
-   Mouse Glow (Desktop Only)
-========================================== */
+// ==============================
+// Background Parallax
+// ==============================
 
-if (window.matchMedia("(pointer:fine)").matches) {
+const bg = document.querySelector(".background");
 
-    const card = document.querySelector(".glass-card");
+window.addEventListener("mousemove", (e) => {
 
-    document.addEventListener("mousemove", (e) => {
+    if (!bg) return;
 
-        if (!card) return;
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
 
-        const rect = card.getBoundingClientRect();
+    bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+});
 
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
+// ==============================
+// Ripple CSS (Injected)
+// ==============================
 
-    });
+const style = document.createElement("style");
+
+style.textContent = `
+
+.channel-btn{
+
+    overflow:hidden;
+    transform-style:preserve-3d;
 
 }
 
-/* ==========================================
-   Button Ripple
-========================================== */
+.ripple{
 
-document.querySelectorAll(".channel-btn").forEach(button => {
+    position:absolute;
 
-    button.addEventListener("click", function (e) {
+    border-radius:50%;
 
-        const ripple = document.createElement("span");
+    transform:scale(0);
 
-        ripple.className = "ripple";
+    background:rgba(255,255,255,.25);
 
-        const rect = this.getBoundingClientRect();
+    pointer-events:none;
 
-        ripple.style.left = `${e.clientX - rect.left}px`;
-        ripple.style.top = `${e.clientY - rect.top}px`;
+    animation:ripple .65s ease-out;
 
-        this.appendChild(ripple);
+}
 
-        setTimeout(() => {
+@keyframes ripple{
 
-            ripple.remove();
+    to{
 
-        }, 700);
+        transform:scale(4);
 
-    });
+        opacity:0;
 
-});
+    }
+
+}
+
+`;
+
+document.head.appendChild(style);
