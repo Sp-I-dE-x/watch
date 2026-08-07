@@ -872,3 +872,41 @@ body{
     }
 
 }
+
+/* Ripple Effect */
+
+.channel-btn{
+    position:relative;
+    overflow:hidden;
+}
+
+.ripple{
+
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    background:rgba(255,255,255,.45);
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%) scale(0);
+
+    animation:ripple .7s linear;
+
+    pointer-events:none;
+
+}
+
+@keyframes ripple{
+
+    to{
+
+        transform:translate(-50%,-50%) scale(28);
+
+        opacity:0;
+
+    }
+
+}
